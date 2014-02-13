@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[浪花一朵朵]]></title>
+  <subtitle><![CDATA[技术是海，深不见底；生活是洋，广不着边；而我如浪花，清澈透明并且舞动双手，仰望天空。]]></subtitle>
+  <link href="/atom.xml" rel="self"/>
+  <link href="http://syxiaqj.github.io/"/>
+  <updated>2014-02-13T07:50:56.173Z</updated>
+  <id>http://syxiaqj.github.io/</id>
+  
+  <author>
+    <name><![CDATA[员员]]></name>
+    <email><![CDATA[syxiaqj@gmail.com]]></email>
+  </author>
+  
+  <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[使用CocoaPods来管理第三方库]]></title>
+    <link href="http://syxiaqj.github.io/2014/02/13/how-to-use-cocoapods-in-ios-project/"/>
+    <id>http://syxiaqj.github.io/2014/02/13/how-to-use-cocoapods-in-ios-project/</id>
+    <published>2014-02-13T02:36:23.000Z</published>
+    <updated>2014-02-13T07:23:37.000Z</updated>
+    <content type="html"><![CDATA[<p>在求快、求快、求更快的IT行业，项目的开发效率一直被视为项目成功与否的关键因素。作为开发人员，如果码码躬亲，当然不太可取，能利用别人的开源的第三方类库，那是最好不过的事情了。然而当一个项目中使用了十几个第三方类库的时候，你有没有想过要如何管理这些类库呢？<br>在iOS项目中，<strong>CocoaPods</strong>便是这样一款工具。</p>
+<p><a id="more"></a>
+<a href="https://github.com/CocoaPods/CocoaPods" target="_blank">CocoaPods github</a><br><a href="http://cocoapods.org/" target="_blank">CocoaPods官网</a></p>
+<p>这个工具在2011年就有了，我是刚刚知道，尝试着使用了一下，感觉很棒。下面就记录从安装到使用的过程：</p>
+<ul>
+<li>安装</li>
+<li>使用</li>
+<li>问题</li>
+</ul>
+<h3 id="-"><strong>安装</strong></h3>
+<p><strong>第一步：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="built_in">sudo</span> gem install cocoapods
+</pre></td></tr></table></figure>
+
+<p><strong>第二步：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>pod setup
+</pre></td></tr></table></figure>
+
+<p>以上两步都会比较慢，第二步特别慢，请耐心等待。第二步的时候是在下载数据，你可以到<code>~/.cocoapods</code>目录下，查看下载进度<code>du -sh *</code>。</p>
+<h3 id="-"><strong>使用</strong></h3>
+<p><strong>第一步：</strong></p>
+<p>在项目根目录下创建一个名为<strong>Podfile</strong>的文件</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>touch 项目根目录/Podfile
+</pre></td></tr></table></figure>
+
+<p><strong>第二步：</strong></p>
+<p>将需要用到的库名称写到文件中，以<code>SDWebImage</code>和<code>JSONKit</code>为例：<br>在编写<strong>Podfile</strong>之前，先来看看CocoaPods中有没有这两个库，需要用<code>pod search</code>命令搜索一下，</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>pod search SDWebImage
+</pre></td></tr></table></figure>
+
+<p>然后看到这样的信息，</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="code"><pre>-<span class="ruby">&gt; <span class="constant">SDWebImage</span> (<span class="number">3.5</span>.<span class="number">2</span>)
+</span>   Asynchronous image downloader with cache support with an UIImageView category.
+   pod 'SDWebImage', '~&gt; 3.5.2'
+   -<span class="ruby"> <span class="constant">Homepage</span><span class="symbol">:</span> <span class="symbol">https:</span>/<span class="regexp">/github.com/rs</span><span class="regexp">/SDWebImage
+</span></span>   -<span class="ruby"> <span class="constant">Source</span><span class="symbol">:</span>   <span class="symbol">https:</span>/<span class="regexp">/github.com/rs</span><span class="regexp">/SDWebImage.git
+</span></span>   -<span class="ruby"> <span class="constant">Versions</span><span class="symbol">:</span> <span class="number">3.5</span>.<span class="number">2</span>, <span class="number">3.5</span>.<span class="number">1</span>, <span class="number">3.5</span>, <span class="number">3.4</span>, <span class="number">3.3</span>, <span class="number">3.2</span>, <span class="number">3.1</span>, <span class="number">3.0</span>, <span class="number">2.7</span>.<span class="number">4</span>, <span class="number">2.7</span>, <span class="number">2.6</span>, <span class="number">2.5</span>, <span class="number">2.4</span> [master repo]
+</span>   -<span class="ruby"> <span class="constant">Sub</span> <span class="symbol">specs:</span>
+</span>     -<span class="ruby"> <span class="constant">SDWebImage</span>/<span class="constant">Core</span> (<span class="number">3.5</span>.<span class="number">2</span>)
+</span>     -<span class="ruby"> <span class="constant">SDWebImage</span>/<span class="constant">MapKit</span> (<span class="number">3.5</span>.<span class="number">2</span>)
+</span>     -<span class="ruby"> <span class="constant">SDWebImage</span>/<span class="constant">WebP</span> (<span class="number">3.5</span>.<span class="number">2</span>)</span>
+</pre></td></tr></table></figure>
+
+<p>这就说明这个库存在，看到<code>pod &#39;SDWebImage&#39;, &#39;~&gt; 3.5.2’</code>这句了吗，复制一下，等会会用到。同理，JSONKit也可以这样查看一下相关信息。</p>
+<p>好了，现在我们可以编写<strong>Podfile</strong>文件了，文件的具体格式如下（记事本打开还是vim打开，各位请随意）：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre><span class="built_in">platform</span> : ios
+pod <span class="string">'SDWebImage'</span>, <span class="string">'~&gt; 3.5.2'</span>
+pod <span class="string">'JSONKit'</span>, <span class="string">'~&gt; 1.5pre'</span>
+</pre></td></tr></table></figure>
+
+<p><strong>第三步：</strong></p>
+<p>先cd到项目根目录，执行下面命令</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>pod <span class="keyword">install</span>
+</pre></td></tr></table></figure>
+
+<p>到此基本上就OK了。打开项目根目录瞧瞧，是不是有点不一样了，目录结构大概是这样<br><img src="/image/how-to-use-cocoapods-in-ios-project/cocoapods_1.png" alt=""><br>然后用.xcworkspace打开工程就OK了<br>更改了Podfile文件，就需要重新运行一下这条命令<code>pod install</code></p>
+<h3 id="-"><strong>问题</strong></h3>
+<p><strong>1、在项目工程中无法引用类库</strong></p>
+<p>你发现了吗？你想使用<code>#import &quot;JSONKit.h”</code>，发现根本没有，你试试<code>#import &lt;JSONKit.h&gt;</code>，这个应该是可以的，而且在程序中也能使用了，完全没问题。但是对于优点强迫症的我，还是需要引号也能引用类库。具体的办法如下：<br>在项目工程的targets中，不是pod工程，<code>Build Setting -&gt; User header Search Paths</code>，新建一个path<code>${SRCROOT}</code>，并且路径选择为<code>recusive</code>，然后你再试试<code>#import &quot;JSONKit.h”</code>，应该没问题了。</p>
+<p><strong>2、执行<code>pod install</code>后，出现这样的提示：</strong></p>
+<pre><code>[!] The target `project name [Debug]` overrides the `OTHER_LDFLAGS` build setting defined in `Pods/Pods.xcconfig&#39;.
+- Use the `$(inherited)` flag, or
+- Remove the build settings from the target.
+</code></pre><p>感觉不是每次会出现，我第一次的时候出现这样的提醒，你可以<a href="http://www.99css.com/archives/1346" target="_blank">参考这里</a></p>
+<p><strong>3、执行<code>pod</code>命令时，总是出现这样的一个错误</strong>  </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>/System/Library/Frameworks/Ruby<span class="preprocessor">.framework</span>/Versions/<span class="number">2.0</span>/usr/lib/ruby/<span class="number">2.0</span><span class="number">.0</span>/universal-darwin13/rbconfig<span class="preprocessor">.rb</span>:<span class="number">212</span>: warning: Insecure world writable dir /usr/local/bin <span class="keyword">in</span> PATH, mode <span class="number">040707</span>
+</pre></td></tr></table></figure>
+
+<p>答案尚不知</p>
+<p>参考文章：<br><a href="http://blog.devtang.com/blog/2012/12/02/use-cocoapod-to-manage-ios-lib-dependency/" target="_blank">《使用CocoaPods来做iOS程序的包依赖管理》</a><br><a href="http://code4app.com/article/cocoapods-install-usage" target="_blank">《CocoaPods安装和使用教程》</a><br><a href="http://www.99css.com/archives/1346" target="_blank">《CocoaPods 出现 OTHER_LDFLAGS 错误的解决方法》</a></p>
+<p><strong>在使用过程中，再遇到情况，会持续更新</strong></p>
+]]></content>
+    <summary type="html"><![CDATA[<p>在求快、求快、求更快的IT行业，项目的开发效率一直被视为项目成功与否的关键因素。作为开发人员，如果码码躬亲，当然不太可取，能利用别人的开源的第三方类库，那是最好不过的事情了。然而当一个项目中使用了十几个第三方类库的时候，你有没有想过要如何管理这些类库呢？<br>在iOS项目中，<strong>CocoaPods</strong>便是这样一款工具。</p>
+<p>]]></summary>
+    
+      <category term="iOS" scheme="http://syxiaqj.github.io/tags/iOS/"/>
+    
+      <category term="CocoaPods" scheme="http://syxiaqj.github.io/tags/CocoaPods/"/>
+    
+      <category term="iOS" scheme="http://syxiaqj.github.io/categories/iOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Hello, My blog]]></title>
+    <link href="http://syxiaqj.github.io/2014/02/11/hello-my-blog/"/>
+    <id>http://syxiaqj.github.io/2014/02/11/hello-my-blog/</id>
+    <published>2014-02-11T06:18:36.000Z</published>
+    <updated>2014-02-11T09:45:12.000Z</updated>
+    <content type="html"><![CDATA[<p>经过一番摸索与学习，这个博客算是基本搭起来了，先给自己鼓掌一下（嘿嘿）。</p>
+<p>从此开启博客，在这里记录自己的学习与生活。希望若干时间以后，回头看看，还能记起当初的时间花在哪里了。</p>
+<p>第一篇博文，就说说这个博客的诞生与打算吧。</p>
+<p><a id="more"></a></p>
+<h3 id="-"><strong>为什么打算写博客了</strong></h3>
+<p>时间老人，从来不曾停下自己的脚步。看似也比较努力的人，当自己坐下来想想，做成过什么事情的时候，却也乏善可陈。我想，我应该把自己的的学习生活，记录一下了。特别作为一名技术人员，技术的积累也非常重要。就像计算机的内存毕竟有限，大量的数据还是需要借助硬盘来储存下来一样，大脑虽然还是，却也“好记性不如烂笔头”。</p>
+<h3 id="-"><strong>为什么要自己搭建一个博客</strong></h3>
+<p>现在各大门户与一些专门的博客网站上去建一个自己的博客，也是非常方便的。自己搭建一个博客，有麻烦有费事，为什么呢？作为一名技术人员，当然希望玩一玩新鲜的技术（利用开源框架搭建自己的博客，也已经不是什么特别新鲜的东西了，只是对于我来说，这是第一次尝试），这也算一种探索精神吧。能自己动手建立一个自己的博客，用shell工具写博客，用命令行发布博客，这是一件多么cool的事情。有种黑客的赶脚，瞬间就高大上了，有木有。这才是能体现干技术的价值嘛！</p>
+<h3 id="-hexo-"><strong>为什么要hexo这个开源框架</strong></h3>
+<p>先对这个开源框架的作者<a href="https://github.com/tommy351/hexo" target="_blank">tommy351</a>崇拜一下，来自海峡对岸，据说是位大学生。至于hexo到底是个什么，我只知道是个基于node.js搭建静态博客的开源框架，江湖传言它快速、简单、功能强大。虽然我也没用过jekyll、Octopress、Wordpress，但是大家用过都说hexo好，我想，那就它了。链接：<a href="http://zespia.tw/hexo/" target="_blank">hexo官网</a></p>
+<h3 id="-"><strong>搭建这个博客不容易</strong></h3>
+<p>问题一，node.js安装有问题。作为一个ios开发人员，对于node.js毫无概念，虽说只要安装一下node就好了，安装包也能下载，但就是安装有问题，在install hexo的时候，一直报错。这个问题折腾了我很久，后来让服务端懂node.js的大哥，帮我卸载重装了。<br>问题二，上传git后不会使用git pages，主要也是没有用过，现在基本上会用了。<br>问题三，hexo的文件结构尚不是很清楚，当然主要也是刚开始用，想自己改改页面布局的时候，就有点不知所错了，生怕改错点什么。<br>这里就不再赘述了，下次会好好把所有的问题都整理一下。</p>
+<h3 id="-"><strong>感谢</strong></h3>
+<p>对于我这样的小白而言，能把这个博客搭建起来，是离不开别人的帮助的。网上的资料，主要来自<a href="http://zipperary.com/categories/hexo/" target="_blank">zippera</a>，感谢他的分享。对于小白而言，有时候其实是看不懂资料的，很多不懂的问题，都问一个人称“刘指导”的<a href="http://weibo.com/jimnox" target="_blank">吉姆</a>，非常感谢他的耐心指导。还要感谢，单位的胖子，帮我搞定node.js的安装。</p>
+<h3 id="-"><strong>打算</strong></h3>
+<p>这个博客，还是以写技术为主，打算能每周更新一篇技术博文。希望能坚持住！</p>
+<h3 id="-"><strong>后记</strong></h3>
+<p>大家都叫我<a href="http://weibo.com/109028053" target="_blank">员员</a>。</p>
+<p>一直是个技术的小白，曾经不知道技术为何物，甚至不敢在电脑上装QQ（看观莫笑），第一堂程序课，找不到老师说的“输入”在哪，很久以后才知道原来，就是控制台打一行代码<code>cin&gt;&gt;a</code>。</p>
+<p>现在做iOS开发，却深感技艺不精，所以要努力学习。</p>
+<p>关注社会时事热点，听别人的意见，并且有自己的判断。明白，生存是最基本的奋斗目标，当然，心存诗与远方。</p>
+<p>技术是海，深不见底；生活是洋，广不着边；而我如浪花，清澈透明并且舞动双手，仰望天空。</p>
+<p>加油！</p>
+]]></content>
+    <summary type="html"><![CDATA[<p>经过一番摸索与学习，这个博客算是基本搭起来了，先给自己鼓掌一下（嘿嘿）。</p>
+<p>从此开启博客，在这里记录自己的学习与生活。希望若干时间以后，回头看看，还能记起当初的时间花在哪里了。</p>
+<p>第一篇博文，就说说这个博客的诞生与打算吧。</p>
+<p>]]></summary>
+    
+      <category term="杂记" scheme="http://syxiaqj.github.io/tags/%E6%9D%82%E8%AE%B0/"/>
+    
+      <category term="杂记" scheme="http://syxiaqj.github.io/categories/%E6%9D%82%E8%AE%B0/"/>
+    
+  </entry>
+  
+</feed>
