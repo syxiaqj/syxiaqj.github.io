@@ -4,7 +4,7 @@
   <subtitle><![CDATA[技术是海，深不见底；生活是洋，广不着边；而我如浪花，清澈透明并且舞动双手，仰望天空。]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://syxiaqj.github.io/"/>
-  <updated>2014-02-15T12:39:02.041Z</updated>
+  <updated>2014-02-17T14:34:47.593Z</updated>
   <id>http://syxiaqj.github.io/</id>
   
   <author>
@@ -13,6 +13,54 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[用hexo搭建属于自己的博客]]></title>
+    <link href="http://syxiaqj.github.io/2014/02/17/how-to-use-hexo/"/>
+    <id>http://syxiaqj.github.io/2014/02/17/how-to-use-hexo/</id>
+    <published>2014-02-17T07:54:29.000Z</published>
+    <updated>2014-02-17T14:27:43.000Z</updated>
+    <content type="html"><![CDATA[<p>如果你是一名技术人员，用点点、轻博客这类的博客网站写技术文章，是不是觉得不给力呢？在博客园、OSChina等技术论坛上写技术博文，还是不错的。但是，你知道不知道，还有更酷的方式，那就是自己搭建一个博客！是的，当我听到这个消息的时候，我已经迫不及待了！</p>
+<p>搭建个人的静态博客网站，有很多优秀的框架，诸如jekyll，Octopress，WordPress等，当然这些我都没用过（哈哈）。我使用的是江湖号称“快速、轻量、易拓展”的hexo。</p>
+<p><a id="more"></a>
+我把自己搭建博客的过程整理了一下，希望对需要的人有帮助（包括我自己）。硬件</p>
+<ul>
+<li>简介hexo</li>
+<li>安装环境</li>
+<li>安装hexo</li>
+<li>运行hexo</li>
+</ul>
+<p>说明一下，我用的Mac电脑，所以以下部分，都是在Mac上完成的。</p>
+<h3 id="-hexo-"><strong>简介hexo</strong></h3>
+<p>关于什么是hexo，我想引用作者的一段话：</p>
+<pre><code>Hexo is a fast, simple and powerful blog framework. It parses your posts with Markdown or other render engine and generates static files with the beautiful theme. All of these just take seconds.
+</code></pre><p>简单、快速、易拓展，非常具有吸引力。</p>
+<p>Git项目：<a href="https://github.com/tommy351/hexo" target="_blank">hexo项目</a><br>官方文档：<a href="http://zespia.tw/hexo/" target="_blank">hexo文档</a></p>
+<h3 id="-"><strong>安装环境</strong></h3>
+<p>安装hexo是非常简单的，但是在安装hexo前，需要先安装一下所需要的环境。安装<strong>Node.js</strong>和<strong>Git</strong></p>
+<p>这个在官方文档上又比较详细的说明<a href="http://zespia.tw/hexo/docs/" target="_blank">hexo document</a>，这里就不在赘述了。<br>不过我在安装Node.js过程中还是遇到了问题，对于没有接触过Node.js的小白来说，遇到这样的问题总是很蛋疼的，没办法，只能求助于了解Node.js的大神，结果帮人家帮我搞定了，万幸。 </p>
+<p>虽然我无法准确的说清楚是什么原因，但是大概是两个方面的原因：<br>1、安装node.js的版本不对<br>2、环境变量有问题</p>
+<h3 id="-hexo-"><strong>安装hexo</strong></h3>
+<p>运行下面命令</p>
+<pre><code>$ npm install -g hexo
+</code></pre><p>如果Git、Node.js安装正确，安装hexo，是非常easy的，轻松愉快搞定。如果报错，大概是环境安装有问题。</p>
+<p>成功安装了hexo后，我们要怎么使用呢，我看下面。</p>
+<h3 id="-hexo-"><strong>运行hexo</strong></h3>
+<p>1、初始化<code>hexo init &lt;folder&gt;</code>，<folder>就是路径，执行完后，去看看该路径下的文件夹，目录大概是这样的<br><img src="/image/how-to-use-hexo/hexoDir.png" alt="hexo文件夹"><br>2、运行如下命令<code>hexo server</code><br>3、浏览器访问<code>localhost:4000/</code>看看，恭喜你，已经有一篇博客已经出现了（默认会有一篇“Hello World”的博文)</p>
+<h3 id="-"><strong>后记</strong></h3>
+<p>至此，用hexo在本地搭建自己的博客，已经完成了。后面会根据我自己的理解，介绍一下hexo的目录结构，如何使用主题、插件，如何将博客部署到git上等内容，今天就到这里了！</p>
+]]></content>
+    <summary type="html"><![CDATA[<p>如果你是一名技术人员，用点点、轻博客这类的博客网站写技术文章，是不是觉得不给力呢？在博客园、OSChina等技术论坛上写技术博文，还是不错的。但是，你知道不知道，还有更酷的方式，那就是自己搭建一个博客！是的，当我听到这个消息的时候，我已经迫不及待了！</p>
+<p>搭建个人的静态博客网站，有很多优秀的框架，诸如jekyll，Octopress，WordPress等，当然这些我都没用过（哈哈）。我使用的是江湖号称“快速、轻量、易拓展”的hexo。</p>
+<p>]]></summary>
+    
+      <category term="hexo" scheme="http://syxiaqj.github.io/tags/hexo/"/>
+    
+      <category term="Mac" scheme="http://syxiaqj.github.io/tags/Mac/"/>
+    
+      <category term="hexo" scheme="http://syxiaqj.github.io/categories/hexo/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[使用CocoaPods来管理第三方库]]></title>
