@@ -4,7 +4,7 @@
   <subtitle><![CDATA[技术是海，深不见底；生活是洋，广不着边；而我如浪花，清澈透明并且舞动双手，仰望天空。]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://syxiaqj.github.io/"/>
-  <updated>2014-02-19T05:34:19.347Z</updated>
+  <updated>2014-02-19T05:37:36.367Z</updated>
   <id>http://syxiaqj.github.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://syxiaqj.github.io/2014/02/18/structure-of-hexo/"/>
     <id>http://syxiaqj.github.io/2014/02/18/structure-of-hexo/</id>
     <published>2014-02-18T03:12:24.000Z</published>
-    <updated>2014-02-19T05:33:18.000Z</updated>
+    <updated>2014-02-19T05:37:27.000Z</updated>
     <content type="html"><![CDATA[<p>今天来整理一下hexo的目录结构，了解hexo每个目录的作用，并且设置全局配置文件<code>_config.yml</code>的相关参数，初步定义属于你自己的博客。我们开始吧！</p>
 <p><a id="more"></a></p>
 <h3 id="-1-"><strong>1.主目录结构</strong></h3>
@@ -45,7 +45,7 @@
 }
 </code></pre><p>参数也很容易理解，一看就明白，该文件基本上也不需要操作，就不多解释了。</p>
 <h4 id="-scaffolds-"><strong>scaffolds</strong></h4>
-<p>scaffolds是“脚手架、骨架”的意思，当你新建一篇文章（hexo new &#39;title&#39;）的时候，hexo是根据这个目录下的文件进行构建的。基本上也很少需要我们操作。</p>
+<p>scaffolds是“脚手架、骨架”的意思，当你新建一篇文章（hexo new &#39;title&#39;）的时候，hexo是根据这个目录下的文件进行构建的。基本不用关心。</p>
 <h4 id="-scripts-"><strong>scripts</strong></h4>
 <p>脚本目录，此目录下的JavaScript文件会被自动执行。</p>
 <h4 id="-source-"><strong>source</strong></h4>
