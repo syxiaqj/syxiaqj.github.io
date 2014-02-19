@@ -1,0 +1,368 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>hexo的目录结构及作用 | 浪花一朵朵</title>
+  <meta name="author" content="员员">
+  
+  <meta name="description" content="浪花一朵朵，员员">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="hexo的目录结构及作用"/>
+  <meta property="og:site_name" content="浪花一朵朵"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="浪花一朵朵" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+    <meta property="wb:webmaster" content="5e647bb2931c8445" />
+
+    <div class="alignleft">
+  <h1><a href="/">浪花一朵朵</a></h1>
+  <h2><a href="/">技术是海，深不见底；生活是洋，广不着边；而我如浪花，清澈透明并且舞动双手，仰望天空。</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+    <li><a href="/atom.xml">RSS</a></li>
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+
+  </header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-02-18T03:12:24.000Z"><a href="/2014/02/18/structure-of-hexo/">2月 18 2014</a></time>
+      
+      
+  
+    <h1 class="title">hexo的目录结构及作用</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>今天来整理一下hexo的目录结构，了解hexo每个目录的作用，并且设置全局配置文件<code>_config.yml</code>的相关参数，初步定义属于你自己的博客。我们开始吧！</p>
+<p><a id="more"></a></p>
+<h3 id="-1-"><strong>1.主目录结构</strong></h3>
+<p>主目录，简洁明了</p>
+<pre><code>|-- _config.yml
+|-- package.json
+|-- scaffolds
+|-- scripts
+|-- source
+   |-- _drafts
+   |-- _posts
+|-- themes
+</code></pre><h3 id="-2-"><strong>2.主目录介绍</strong></h3>
+<h4 id="-_config-yml-"><strong>_config.yml</strong></h4>
+<p>全局配置文件，网站的很多信息都在这里配置，诸如网站名称，副标题，描述，作者，语言，主题，部署等等参数。这个文件下面会做较为详细的介绍。</p>
+<h4 id="-package-json-"><strong>package.json</strong></h4>
+<p>hexo框架的参数，如果不小心把它删掉了，没关系，新建一个文件，讲内容写入文件，保存就OK了。里面的参数基本上是固定的，如下：</p>
+<pre><code>{
+  &quot;name&quot;: &quot;hexo&quot;,
+  &quot;version&quot;: &quot;2.4.5&quot;,
+  &quot;private&quot;: true,
+  &quot;dependencies&quot;: {}
+}
+</code></pre><p>参数也很容易理解，一看就明白，该文件基本上也不需要操作，就不多解释了。</p>
+<h4 id="-scaffolds-"><strong>scaffolds</strong></h4>
+<p>scaffolds是“脚手架、骨架”的意思，当你新建一篇文章（hexo new &#39;title&#39;）的时候，hexo是根据这个目录下的文件进行构建的。基本上也很少需要我们操作。</p>
+<h4 id="-scripts-"><strong>scripts</strong></h4>
+<p>脚本目录，此目录下的JavaScript文件会被自动执行。</p>
+<h4 id="-source-"><strong>source</strong></h4>
+<p>这个目录很重要，新建的文章都是在保存在这个目录下的，有两个子目录：<code>_drafts</code>，<code>_posts</code>。需要新建的博文都放在<code>_posts</code>目录下。  </p>
+<p><code>_posts</code>目录下是一个个<code>markdown</code>文件。你应该可以看到一个<code>hello-world.md</code>的文件，文章就在这个文件中编辑。  </p>
+<p><code>_posts</code>目录下的md文件，会被编译成html文件，放到<code>public</code>（此文件现在应该没有，因为你还没有编译过）文件夹下。</p>
+<h4 id="-themes-"><strong>themes</strong></h4>
+<p>网站主题目录，hexo有非常好的主题拓展，支持的主题也很丰富。该目录下，每一个子目录就是一个主题，我的子目录如下：</p>
+<pre><code>|-- landscape
+   |--
+|-- light
+   |--
+</code></pre><p>我装了两个主题，<code>landscape</code>是我这个hexo版本的默认主题，我自己下载了一个<code>light</code>主题。其实<code>light</code>也是之前版本的默认主题。我使用的的<code>light</code>主题。</p>
+<p>你也可以自己下载主题放到该文件下，<a href="https://github.com/tommy351/hexo/wiki/Themes" target="_blank">hexo主题传送门</a></p>
+<p>主题目录下我们可以进行很多自定义的操作，诸如，给网站添加微博秀、添加评论组件、添加分享组件、添加统计等等，让自己的博客网站更丰富、有趣、实用。</p>
+<p>themes目录结构及优化自己的博客，这些内容我会在下一篇博文中介绍。</p>
+<h3 id="-3-_config-yml-"><strong>3._config.yml文件</strong></h3>
+<p><code>_config.yml</code>文件的作用上面已经讲过了，下面先呈现以下<code>_config.yml</code>文件中的内容，并对主要参数做简单的介绍</p>
+<pre><code># Hexo Configuration
+## Docs: http://zespia.tw/hexo/docs/configuration.html
+## Source: https://github.com/tommy351/hexo/
+
+# Site    #站点信息配置
+title: 浪花一朵朵        #网站标题
+subtitle: 技术是海，深不见底；生活是洋，广不着边；而我如浪花，清澈透明并且舞动双手，仰望天空。        #网站副标题
+description: 浪花一朵朵        #网站描述，网站上不会显示出来，但搜索引擎会用到改字段
+author: 员员        #作者
+email: syxiaqj@gmail.com    #联系邮箱
+language: zh-CN        #语言，简体中文当然用zh-CN
+
+# URL    #部署到公网，信息配置，后面介绍如何将网站部署到git上时介绍此信息
+## If your site is put in a subdirectory, set url as &#39;http://yoursite.com/child&#39; and root as &#39;/child/&#39;
+url: http://syxiaqj.github.io    
+root: /
+permalink: :year/:month/:day/:title/
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+
+# Directory
+source_dir: source
+public_dir: public
+
+# Writing
+new_post_name: :title.md # File name of new posts
+default_layout: post
+auto_spacing: false # Add spaces between asian characters and western characters
+titlecase: false # Transform title into titlecase
+external_link: true # Open external links in new tab
+max_open_file: 100
+multi_thread: true
+filename_case: 0
+render_drafts: false
+post_asset_folder: false
+highlight:
+  enable: true
+  line_number: true
+  tab_replace:
+
+# Category &amp; Tag
+default_category: uncategorized
+category_map:
+tag_map:
+
+# Archives
+## 2: Enable pagination        #启用分页
+## 1: Disable pagination    #不启用分页
+## 0: Fully Disable            #完全不可见
+archive: 1
+category: 1
+tag: 1
+
+# Server
+## Hexo uses Connect as a server
+## You can customize the logger format as defined in
+## http://www.senchalabs.org/connect/logger.html
+port: 4000
+logger: false
+logger_format:
+
+# Date / Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: MMM D YYYY
+time_format: H:mm:ss
+
+# Pagination
+## Set per_page to 0 to disable pagination
+per_page: 10
+pagination_dir: page
+
+# Disqus
+disqus_shortname:
+# Extensions
+## Plugins: https://github.com/tommy351/hexo/wiki/Plugins
+## Themes: https://github.com/tommy351/hexo/wiki/Themes
+theme: light        #使用的主题名称
+exclude_generator:
+plugins:            #插件列表
+- hexo-generator-feed
+- hexo-generator-sitemap
+
+# Markdown
+## https://github.com/chjj/marked
+markdown:
+  gfm: true
+  pedantic: false
+  sanitize: false
+  tables: true
+  breaks: true
+  smartLists: true
+  smartypants: true
+
+# Deployment        #部署到公网配置，后面介绍部署到git上时再详细介绍
+## Docs: http://zespia.tw/hexo/docs/deployment.html
+deploy:
+  type: github
+  repository: https://github.com/syxiaqj/syxiaqj.github.io.git    
+</code></pre><p>先不要急于修改其他参数，我们文件中的第一部分<code>Site</code>(站点信息)，很容易改，还有主题，在<code>Extensions</code>中的<code>theme:</code>参数，这个参数的值就是hexo主目录中<code>themes</code>（主题目录）下子目录文件夹的名称（主题）。</p>
+<p>建议先设置成<code>light</code>，因为我都会以<code>light</code>主题为例做较为详细的介绍</p>
+<h3 id="-4-"><strong>4.后记</strong></h3>
+<p>好了，本地运行一下</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>hexo <span class="keyword">server</span>
+</pre></td></tr></table></figure>
+
+<p>浏览器访问<code>localhost:4000/</code>，网站的标题，副标题等信息是不是都已经更改了！恭喜你，对自己的博客网站的简单的全局设置已经成功了。</p>
+<p>下一篇会详细介绍一下<code>light</code>主题，主题的目录结构，文件关联，并对网站添加更多有意思、并且也很实用的功能。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/hexo/">hexo</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/hexo/">hexo</a>, <a href="/tags/Mac/">Mac</a>
+  </div>
+
+        
+  <div class="bdsharebuttonbox">
+    <a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a>
+    <a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a>
+    <a title="分享到QQ空间" href="#" class="bds_qzone" data-cmd="qzone"></a>
+    <a title="分享到腾讯微博" href="#" class="bds_tqq" data-cmd="tqq"></a>
+    <a title="分享到人人网" href="#" class="bds_renren" data-cmd="renren"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+  </div>
+  <script>window._bd_share_config={"common":{"bdSnsKey":{"tsina":"478399924"},"bdText":"","bdMini":"2","bdMiniList":["youdao","ifeng","people","ff","mail","xg","ty","fbook","twi","deli","linkedin","copy"],"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"syxiaqj"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2014/02/18/structure-of-hexo/">hexo的目录结构及作用</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/17/how-to-use-hexo/">用hexo搭建属于自己的博客</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/13/how-to-use-cocoapods-in-ios-project/">使用CocoaPods来管理第三方库</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/11/hello-my-blog/">Hello, My blog</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/hexo/">hexo</a><small>2</small></li>
+  
+    <li><a href="/categories/iOS/">iOS</a><small>1</small></li>
+  
+    <li><a href="/categories/杂记/">杂记</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  <iframe width="100%" height="350" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=500&fansRow=0&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=1851060211&verifier=375b89d6&dpc=1"></iframe>
+
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li>
+   <a href="http://bilephi.lofter.com/" title="bilephi's blog" target="_blank">Bilephi的摄影博客</a>
+</li>
+</ul>
+</div>
+
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 员员
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+  
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fc63e8d405189e446d9ffff4ecb3ac4da' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+</body>
+</html>
