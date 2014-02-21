@@ -4,7 +4,7 @@
   <subtitle><![CDATA[技术是海，深不见底；生活是洋，广不着边；而我如浪花，清澈透明并且舞动双手，仰望天空。]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://syxiaqj.github.io/"/>
-  <updated>2014-02-19T05:37:36.367Z</updated>
+  <updated>2014-02-21T06:13:21.379Z</updated>
   <id>http://syxiaqj.github.io/</id>
   
   <author>
@@ -13,6 +13,201 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[hexo主题]]></title>
+    <link href="http://syxiaqj.github.io/2014/02/19/introduce-hexo-theme/"/>
+    <id>http://syxiaqj.github.io/2014/02/19/introduce-hexo-theme/</id>
+    <published>2014-02-19T09:45:04.000Z</published>
+    <updated>2014-02-21T06:12:52.000Z</updated>
+    <content type="html"><![CDATA[<p>前一篇文章主要介绍了hexo的目录结构的及文件的作用，这篇文章要介绍一下hexo的主题的目录结构及主要文件的作用，并且以<code>light</code>主题为例，较为详细的了解如何优化自己的博客站点。</p>
+<ul>
+<li>hexo主题目录结构</li>
+<li>如何下载主题</li>
+<li>分析<code>light</code>主题</li>
+<li>优化主题</li>
+</ul>
+<a id="more"></a>
+
+<p>官网上对hexo主题的说明文档：<a href="http://zespia.tw/hexo/docs/themes.html" target="_blank">传送门</a></p>
+<h3 id="-1-hexo-"><strong>1.hexo的主题目录结构</strong></h3>
+<pre><code>|-- themes
+   |-- landscape
+   |-- light
+</code></pre><p>我的目录结构，截图如下：</p>
+<p><img src="/image/introduce-hexo-theme/themeDir.png" alt="主题目录"></p>
+<p>如上面看到的，有两个<code>landscape</code>，<code>light</code>主题，文件夹名称即为主题名称，还记得上一篇文章hexo主目录中的<code>_config.yml</code>文件<code>Extensions</code>部分中的<code>theme:</code>参数吗，那个参数的值便于这里的文件夹名称对应，值是哪个，便意味着哪个主题得到了你的“宠信”（哈哈）。</p>
+<h3 id="-2-"><strong>2.如何下载主题</strong></h3>
+<p>hexo拥有丰富的主题供你选择：<a href="https://github.com/tommy351/hexo/wiki/Themes" target="_blank">主题传送门</a></p>
+<p>你可以手动下载其中的一款或者几款，然后拷贝到你的<code>themes</code>目录下，搞定！</p>
+<p>或者，你cd到<code>themes</code>目录</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="built_in">cd</span> 你的themes目录
+</pre></td></tr></table></figure>
+
+<p>然后运行一下命令</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>git <span class="keyword">clone</span> 主题url
+</pre></td></tr></table></figure>
+
+<h3 id="-3-light-"><strong>3.分析<code>light</code>主题</strong></h3>
+<p>目录结构</p>
+<pre><code>|-- _config.yml
+|-- languages/
+|-- layout/
+|-- LICENSE
+|-- README.md
+|-- source/
+</code></pre><h4 id="-_config-yml-"><strong>_config.yml</strong></h4>
+<p>主题配置文件</p>
+<h4 id="-languages-"><strong>languages</strong></h4>
+<p>语言目录，用于保存语言文件</p>
+<h4 id="-layout-"><strong>layout</strong></h4>
+<p>布局目录，目录结构</p>
+<pre><code>|-- _partial/
+|-- _widget/
+|-- archive.ejs *
+|-- category.ejs *
+|-- index.ejs *
+|-- layout.ejs *
+|-- page.ejs *
+|-- post.ejs *
+|-- tag.ejs *
+</code></pre><p>以上打<code>*</code>的文件表示，每个主题至少需要这些文件。所有的主题都是用<code>layout.ejs</code>作为默认的布局文件，你也可以自定义布局文件。</p>
+<p><code>_widget/</code>： 小工具目录，在<code>light</code>主题中对右边栏的控制。</p>
+<p><code>_partial/</code>： 组件目录，给博客添加统计、评论等功能</p>
+<p>hexo支持很多模板引擎，诸如<a href="(https://github.com/visionmedia/ejs)">EJS</a>，<a href="(http://paularmstrong.github.io/swig/)">Swig</a>，<a href="(https://github.com/haml/haml)">Haml</a>，<a href="(https://github.com/visionmedia/jade)">Jade</a>等，文件以什么后缀，即表示用的是哪个模板引擎，<code>light</code>主题用的是<code>EJS</code>模板。每种模板引擎的语法与使用，各位请点击链接查看，这里就不赘述了。</p>
+<h4 id="-source-"><strong>source</strong></h4>
+<p>主题资源目录，主题用到的CSS、Javascript等文件需要放在这个目录中，会被编译到hexo的<code>public</code>目录中。</p>
+<p>如何进行编译，后面会介绍，我们先赶紧来优化一下自己的博客站点。</p>
+<h3 id="-4-"><strong>4.优化主题</strong></h3>
+<h4 id="-_config-yml-"><strong>_config.yml</strong></h4>
+<p>主题配置配置文件，介绍主要参数</p>
+<pre><code>menu:        #站点导航栏 （标签: 路径）
+  首页: /
+  归档: /archives
+  关于: /about
+
+widgets:        #小工具 即站点的右边一栏 页面会按这里的顺序排列
+- recent_posts
+- category
+- weibo_show
+- blogroll
+
+excerpt_link: 阅读全文   #默认是Read more 可以改成中文
+
+twitter:    #墙内很少用此鸟，so可以删掉
+
+addthis:    #这个也可以删掉
+  enable: true
+
+fancybox: true
+
+baidu_analytics: true    #百度统计，天朝还是这个好使，没办法滴
+
+google_analytics:        #默认统计，多么希望用这个统计，可惜
+
+rss: /atom.xml        #RSS
+
+comment_provider:
+</code></pre><h4 id="-"><strong>添加多说</strong></h4>
+<p><code>light</code>主题自带的是disqus，国内用户，当然不好使，还是用“多说”好。</p>
+<p>1、先在<a href="http://duoshuo.com/" target="_blank">多说</a>注册</p>
+<p>2、<a href="http://duoshuo.com/create-site" target="_blank">创建站点</a></p>
+<p>3、完成后，在“工具”中，获取通用代码</p>
+<pre><code>&lt;!-- Duoshuo Comment BEGIN --&gt;
+&lt;div class=&quot;ds-thread&quot;&gt;&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var duoshuoQuery = {short_name:&quot;用户名&quot;};
+    (function() {
+        var ds = document.createElement(&#39;script&#39;);
+        ds.type = &#39;text/javascript&#39;;ds.async = true;
+        ds.src = &#39;http://static.duoshuo.com/embed.js&#39;;
+        ds.charset = &#39;UTF-8&#39;;
+        (document.getElementsByTagName(&#39;head&#39;)[0] 
+        || document.getElementsByTagName(&#39;body&#39;)[0]).appendChild(ds);
+    })();
+    &lt;/script&gt;
+&lt;!-- Duoshuo Comment END --&gt;
+</code></pre><p>4、用下面命令打开comment.ejs</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>vim themes/light/<span class="keyword">layout</span>/_partial/comment.ejs
+</pre></td></tr></table></figure>
+
+<p>修改如下</p>
+<pre><code>&lt;% if (page.comments){ %&gt;
+&lt;section id=&quot;comment&quot;&gt;
+    //多说通用代码
+&lt;/section&gt;
+&lt;% } %&gt;
+</code></pre><p>5、Over</p>
+<h4 id="-"><strong>添加分享</strong></h4>
+<p>虽然某度，我基本不用，但是某度的分享，大家都用，我也就用用。</p>
+<p>1、打开<a href="http://share.baidu.com/code" target="_blank">百度分享</a>，获取代码。记得进行<strong>下一步按钮设置</strong>，可以对是否设置页面分享、图片分享、划词分享、按钮类型、风格、图标大小等功能。</p>
+<p>2、在<code>themes/light/layout/_partial/</code>目录下，新建一个<code>baidu_analytics.ejs</code>文件</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>touch themes/light/<span class="keyword">layout</span>/_partial/baidu_analytics.ejs
+</pre></td></tr></table></figure>
+
+<p>3、将获取的代码写入<code>baidu_analytics.ejs</code>文件</p>
+<p>4、在<code>themes/light/layout/layout.ejs</code>文件中添加百度统计，添加到<code>&lt;/body&gt;</code>标记前</p>
+<pre><code>&lt;%- partial(&#39;_partial/baidu_analytics&#39;) %&gt;
+</code></pre><h4 id="-show-"><strong>添加微博show</strong></h4>
+<p>1、到<a href="http://app.weibo.com/tool/weiboshow" target="_blank">微博开发平台</a>获取代码</p>
+<p>2、在<code>themes/light/layout/_widget/</code>目录下，新建一个<code>weibo_show.ejs</code>文件，并且将刚获取的代码，写入该文件</p>
+<p>3、在<code>themes/light/_config.yml</code>文件中的<code>widgets</code>中添加<code>weibo_show</code></p>
+<pre><code>widgets:
+- weibo_show
+</code></pre><p>见上面介绍<code>_config.yml</code>内容</p>
+<h4 id="-"><strong>添加友情链接</strong></h4>
+<p>1、在<code>themes/light/layout/_widget/</code>目录下，新建<code>blogroll.ejs</code></p>
+<p>2、编辑文件</p>
+<pre><code>&lt;div class=&quot;widget tag&quot;&gt;
+&lt;h3 class=&quot;title&quot;&gt;友情链接&lt;/h3&gt;
+&lt;ul class=&quot;entry&quot;&gt;
+&lt;li&gt;
+    &lt;a href=&quot;链接地址&quot; title=&quot;title&quot; target=&quot;_blank&quot;&gt;显示名称&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</code></pre><p>3、在<code>themes/light/_config.yml</code>文件中的<code>widgets</code>中添加<code>blogroll</code></p>
+<pre><code>widgets:
+- blogroll
+</code></pre><p>见上面介绍<code>_config.yml</code>内容</p>
+<h4 id="-"><strong>添加“关于”</strong></h4>
+<p>作为一个完整的博客站点，<strong>“关于”</strong>页是不能少的。下面，我们在导航栏上添加上这部分内容</p>
+<p>1、新建一个页面</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>hexo <span class="keyword">new</span> page <span class="string">"about"</span>
+</pre></td></tr></table></figure>
+
+<p>2、编辑<code>source/about/index.md</code>，至于编辑什么，您随意。</p>
+<p>3、在主题的配置文件<code>themes/light/_config.yml</code>中添加</p>
+<pre><code>menu:
+  关于: /about
+</code></pre><p>见上面介绍<code>_config.yml</code>内容</p>
+<h3 id="-5-"><strong>5.后记</strong></h3>
+<p>恩，好了，基本上能优化的东西，都加上了，你本地运行一下<code>hexo generate</code>
+<code>hexo server</code>，看看博客的效果，是不是有那么点样子了。</p>
+<p>我们的博客，基本上已经搭建好了，但是现在我们只能在本地运行，别人访问不了，这可不行，我们的学习成果与经验是想要分享给朋友的，所以我们要把网站部署到git上。</p>
+<p>先不忙，在部署到git上之前，我们先讲一点其他重要的东西，所谓“磨刀不误砍柴工”，下一篇讲《hexo命令以及如何用Markdown写文章》，这个系列的最后一篇，我们介绍如何部署到git，让别人能访问到我们的站点。</p>
+]]></content>
+    <summary type="html"><![CDATA[<p>前一篇文章主要介绍了hexo的目录结构的及文件的作用，这篇文章要介绍一下hexo的主题的目录结构及主要文件的作用，并且以<code>light</code>主题为例，较为详细的了解如何优化自己的博客站点。</p>
+<ul>
+<li>hexo主题目录结构</li>
+<li>如何下载主题</li>
+<li>分析<code>light</code>主题</li>
+<li>优化主题</li>
+</ul>
+]]></summary>
+    
+      <category term="hexo" scheme="http://syxiaqj.github.io/tags/hexo/"/>
+    
+      <category term="Mac" scheme="http://syxiaqj.github.io/tags/Mac/"/>
+    
+      <category term="hexo" scheme="http://syxiaqj.github.io/categories/hexo/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[hexo的目录结构及作用]]></title>
@@ -193,7 +388,7 @@ deploy:
     <link href="http://syxiaqj.github.io/2014/02/17/how-to-use-hexo/"/>
     <id>http://syxiaqj.github.io/2014/02/17/how-to-use-hexo/</id>
     <published>2014-02-17T07:54:29.000Z</published>
-    <updated>2014-02-17T14:27:43.000Z</updated>
+    <updated>2014-02-19T14:51:30.000Z</updated>
     <content type="html"><![CDATA[<p>如果你是一名技术人员，用点点、轻博客这类的博客网站写技术文章，是不是觉得不给力呢？在博客园、OSChina等技术论坛上写技术博文，还是不错的。但是，你知道不知道，还有更酷的方式，那就是自己搭建一个博客！是的，当我听到这个消息的时候，我已经迫不及待了！</p>
 <p>搭建个人的静态博客网站，有很多优秀的框架，诸如jekyll，Octopress，WordPress等，当然这些我都没用过（哈哈）。我使用的是江湖号称“快速、轻量、易拓展”的hexo。</p>
 <p><a id="more"></a>
@@ -220,7 +415,8 @@ deploy:
 </code></pre><p>如果Git、Node.js安装正确，安装hexo，是非常easy的，轻松愉快搞定。如果报错，大概是环境安装有问题。</p>
 <p>成功安装了hexo后，我们要怎么使用呢，我看下面。</p>
 <h3 id="-hexo-"><strong>运行hexo</strong></h3>
-<p>1、初始化<code>hexo init &lt;folder&gt;</code>，<folder>就是路径，执行完后，去看看该路径下的文件夹，目录大概是这样的<br><img src="/image/how-to-use-hexo/hexoDir.png" alt="hexo文件夹"><br>2、运行如下命令<code>hexo server</code><br>3、浏览器访问<code>localhost:4000/</code>看看，恭喜你，已经有一篇博客已经出现了（默认会有一篇“Hello World”的博文)</p>
+<p>1、初始化<code>hexo init &lt;folder&gt;</code>，<code>&lt;folder&gt;</code>就是路径，执行完后，去看看该路径下的文件夹，目录大概是这样的</p>
+<p><img src="/image/how-to-use-hexo/hexoDir.png" alt="hexo文件夹"><br>2、运行如下命令<code>hexo server</code><br>3、浏览器访问<code>localhost:4000/</code>看看，恭喜你，已经有一篇博客已经出现了（默认会有一篇“Hello World”的博文)</p>
 <h3 id="-"><strong>后记</strong></h3>
 <p>至此，用hexo在本地搭建自己的博客，已经完成了。后面会根据我自己的理解，介绍一下hexo的目录结构，如何使用主题、插件，如何将博客部署到git上等内容，今天就到这里了！</p>
 ]]></content>
@@ -241,7 +437,7 @@ deploy:
     <link href="http://syxiaqj.github.io/2014/02/13/how-to-use-cocoapods-in-ios-project/"/>
     <id>http://syxiaqj.github.io/2014/02/13/how-to-use-cocoapods-in-ios-project/</id>
     <published>2014-02-13T02:36:23.000Z</published>
-    <updated>2014-02-13T07:23:37.000Z</updated>
+    <updated>2014-02-20T09:53:04.000Z</updated>
     <content type="html"><![CDATA[<p>在求快、求快、求更快的IT行业，项目的开发效率一直被视为项目成功与否的关键因素。作为开发人员，如果码码躬亲，当然不太可取，能利用别人的开源的第三方类库，那是最好不过的事情了。然而当一个项目中使用了十几个第三方类库的时候，你有没有想过要如何管理这些类库呢？<br>在iOS项目中，<strong>CocoaPods</strong>便是这样一款工具。</p>
 <p><a id="more"></a>
 <a href="https://github.com/CocoaPods/CocoaPods" target="_blank">CocoaPods github</a><br><a href="http://cocoapods.org/" target="_blank">CocoaPods官网</a></p>
@@ -304,11 +500,12 @@ deploy:
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
-</pre></td><td class="code"><pre><span class="built_in">platform</span> : ios
+</pre></td><td class="code"><pre>platform <span class="symbol">:ios</span>
 pod <span class="string">'SDWebImage'</span>, <span class="string">'~&gt; 3.5.2'</span>
 pod <span class="string">'JSONKit'</span>, <span class="string">'~&gt; 1.5pre'</span>
 </pre></td></tr></table></figure>
 
+<p>注意：<code>platform :ios</code>，冒号前后，前面有空格，后面没有空格，否则会出错的。</p>
 <p><strong>第三步：</strong></p>
 <p>先cd到项目根目录，执行下面命令</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
