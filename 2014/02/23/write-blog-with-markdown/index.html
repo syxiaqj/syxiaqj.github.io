@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>用hexo搭建属于自己的博客 | 浪花一朵朵</title>
+  <title>hexo命令及Markdown语法 | 浪花一朵朵</title>
   <meta name="author" content="员员">
   
   <meta name="description" content="浪花一朵朵，员员">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="用hexo搭建属于自己的博客"/>
+  <meta property="og:title" content="hexo命令及Markdown语法"/>
   <meta property="og:site_name" content="浪花一朵朵"/>
 
   
@@ -58,46 +58,79 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-02-17T07:54:29.000Z"><a href="/2014/02/17/how-to-use-hexo/">2月 17 2014</a></time>
+        <time datetime="2014-02-23T05:39:18.000Z"><a href="/2014/02/23/write-blog-with-markdown/">2月 23 2014</a></time>
       
       
   
-    <h1 class="title">用hexo搭建属于自己的博客</h1>
+    <h1 class="title">hexo命令及Markdown语法</h1>
   
 
     </header>
     <div class="entry">
       
-        <p>如果你是一名技术人员，用点点、轻博客这类的博客网站写技术文章，是不是觉得不给力呢？在博客园、OSChina等技术论坛上写技术博文，还是不错的。但是，你知道不知道，还有更酷的方式，那就是自己搭建一个博客！是的，当我听到这个消息的时候，我已经迫不及待了！</p>
-<p>搭建个人的静态博客网站，有很多优秀的框架，诸如jekyll，Octopress，WordPress等，当然这些我都没用过（哈哈）。我使用的是江湖号称“快速、轻量、易拓展”的hexo。</p>
-<p><a id="more"></a>
-我把自己搭建博客的过程整理了一下，希望对需要的人有帮助（包括我自己）。硬件</p>
+        <p>到现在为止我们还没有自己写过一篇文章，你是不是已经跃跃欲试了！好了，马上就来介绍自己动手完成一篇博文。<br>这篇我们要介绍两部分内容，Markdown与hexo的常用命令。</p>
+<a id="more"></a>
+
+<h3 id="-markdown-"><strong>Markdown</strong></h3>
+<p>hexo是使用Markdown编辑文章的，我写的这些文章也都是用这种标记语言完成的。所以，我们先从Markdown说起。</p>
 <ul>
-<li>简介hexo</li>
-<li>安装环境</li>
-<li>安装hexo</li>
-<li>运行hexo</li>
+<li>什么是Markdown</li>
+<li>Markdown语法</li>
+<li>例文</li>
 </ul>
-<p>说明一下，我用的Mac电脑，所以以下部分，都是在Mac上完成的。</p>
-<h3 id="-hexo-"><strong>简介hexo</strong></h3>
-<p>关于什么是hexo，我想引用作者的一段话：</p>
-<pre><code>Hexo is a fast, simple and powerful blog framework. It parses your posts with Markdown or other render engine and generates static files with the beautiful theme. All of these just take seconds.
-</code></pre><p>简单、快速、易拓展，非常具有吸引力。</p>
-<p>Git项目：<a href="https://github.com/tommy351/hexo" target="_blank">hexo项目</a><br>官方文档：<a href="http://zespia.tw/hexo/" target="_blank">hexo文档</a></p>
-<h3 id="-"><strong>安装环境</strong></h3>
-<p>安装hexo是非常简单的，但是在安装hexo前，需要先安装一下所需要的环境。安装<strong>Node.js</strong>和<strong>Git</strong></p>
-<p>这个在官方文档上又比较详细的说明<a href="http://zespia.tw/hexo/docs/" target="_blank">hexo document</a>，这里就不在赘述了。<br>不过我在安装Node.js过程中还是遇到了问题，对于没有接触过Node.js的小白来说，遇到这样的问题总是很蛋疼的，没办法，只能求助于了解Node.js的大神，结果帮人家帮我搞定了，万幸。 </p>
-<p>虽然我无法准确的说清楚是什么原因，但是大概是两个方面的原因：<br>1、安装node.js的版本不对<br>2、环境变量有问题</p>
-<h3 id="-hexo-"><strong>安装hexo</strong></h3>
-<p>运行下面命令</p>
-<pre><code>$ npm install -g hexo
-</code></pre><p>如果Git、Node.js安装正确，安装hexo，是非常easy的，轻松愉快搞定。如果报错，大概是环境安装有问题。</p>
-<p>成功安装了hexo后，我们要怎么使用呢，我看下面。</p>
-<h3 id="-hexo-"><strong>运行hexo</strong></h3>
-<p>1、初始化<code>hexo init &lt;folder&gt;</code>，<code>&lt;folder&gt;</code>就是路径，执行完后，去看看该路径下的文件夹，目录大概是这样的</p>
-<p><img src="/image/how-to-use-hexo/hexoDir.png" alt="hexo文件夹"><br>2、运行如下命令<code>hexo server</code><br>3、浏览器访问<code>localhost:4000/</code>看看，恭喜你，已经有一篇博客已经出现了（默认会有一篇“Hello World”的博文)</p>
+<p>你可以使用vim工具直接编辑md文件，也可以用记事本打开md文件编辑你的文章，也可以Markdown的编辑器编写，有很多在线的编辑器，何有不少客户端的编辑器，我是Mac系统，用的一个叫<a href="http://mouapp.com/" target="_blank"><strong>Mou</strong></a>的编辑器，还比较好使。Windows系统下，你可以自己找一下，应该也会有很好用的编辑器。</p>
+<h4 id="-markdown">什么是Markdown</h4>
+<p>Markdown 是一种轻量级标记语言，创始人为约翰·格鲁伯和亚伦·斯沃茨。它允许人们“使用易读易写的纯文本格式编写文档，然后转换成有效的XHTML文档”。  ——维基百科</p>
+<p>先简单介绍一下，Markdown的语法，具体怎么用，我相信大家一看例文就马上明白了。</p>
+<h4 id="markdown-">Markdown语法</h4>
+<p><strong>1、分段：</strong>  <code>两个回车</code></p>
+<p><strong>2、换行</strong>  <code>两个空格 + 回车</code></p>
+<p><strong>3、标题</strong> <code>#</code>~<code>######</code> 井号的个数表示几级标题，即Markdown可以表示一级标题到六级标题</p>
+<p><strong>4、引用</strong>  <code>&gt;</code></p>
+<p><strong>5、列表</strong> <code>*</code>，<code>+</code>，<code>-</code>，<code>1.</code>，选其中之一，注意后面有个空格</p>
+<p><strong>6、代码区块</strong>  <code>四个空格</code>开头</p>
+<p><strong>7、链接</strong>  <code>[文字](链接地址)</code></p>
+<p><strong>8、图片</strong>  <code>![图片说明](图片地址)</code>，图片地址可以是本地路劲，也可以是网络地址</p>
+<p><strong>9、强调</strong>  <code>**文字**</code>，<code>__文字__</code>，<code>_文字_</code>，<code>*文字*</code></p>
+<p><strong>10、代码</strong>  ```，`` </p>
+<p>下面来看看例文，你就马上明白，怎么来使用这些符号来写好一篇自己的博文了。</p>
+<h4 id="-">例文</h4>
+<p>在线编辑器例文：<a href="https://www.zybuluo.com/mdeditor" target="_blank">传送门</a></p>
+<p>Mou编辑器：<a href="http://mouapp.com/" target="_blank">下载地址</a></p>
+<p>你先试试，用Markdown怎么去些自己的文章，有了例子，还是很容易上手的。</p>
+<h3 id="-hexo-"><strong>hexo常用命令</strong></h3>
+<p>我们在前面的已经略微的接触了一些hexo的命令，如<code>hexo new &quot;my blog&quot;</code>，<code>hexo server</code>等。下面来介绍一下我们经常会用到的hexo命令</p>
+<p><strong>1、新建</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>hexo <span class="keyword">new</span> <span class="string">"my blog"</span>
+</pre></td></tr></table></figure>
+
+<p>新建的文件在<code>hexo/source/_posts/my-blog.md</code></p>
+<p><strong>2、编译</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>hexo <span class="keyword">generate</span>
+</pre></td></tr></table></figure>
+
+<p>一般部署上去的时候都需要编译一下，编译后，会出现一个<code>public</code>文件夹，将所有的md文件编译成html文件</p>
+<p><strong>3、开启本地服务</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>hexo <span class="keyword">server</span>
+</pre></td></tr></table></figure>
+
+<p>这个命令，我之前已经用过了，开启本地hexo服务用的</p>
+<p><strong>4、部署</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>hexo deploy
+</pre></td></tr></table></figure>
+
+<p>部署到git上的时候，需要用这个命令，下一篇中，我们会使用到这个命令</p>
+<p><strong>5、清除<code>public</code></strong></p>
+<p>hexo clean</p>
+<p>当<code>source</code>文件夹中的部分资源更改过之后，特别是对文件进行了删除或者路径的改变之后，需要执行这个命令，然后重新编译。</p>
+<p>以上这些都是我在使用过程中经常用到的一些hexo命令。最为详细、最为全面的说明文档当然还是在<a href="http://zespia.tw/hexo/docs/commands.html" target="_blank">官网</a>。请各位猛戳。</p>
 <h3 id="-"><strong>后记</strong></h3>
-<p>至此，用hexo在本地搭建自己的博客，已经完成了。后面会根据我自己的理解，介绍一下hexo的目录结构，如何使用主题、插件，如何将博客部署到git上等内容，今天就到这里了！</p>
+<p>OK，下一篇介绍hexo这个系列的最后一篇文章《如何讲博客部署到git上》。</p>
+<p><strong><em>大家如果有什么疑问，欢迎通过留言、微博等多种途径进行交流</em></strong></p>
 
       
     </div>

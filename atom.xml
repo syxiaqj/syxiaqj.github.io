@@ -4,7 +4,7 @@
   <subtitle><![CDATA[技术是海，深不见底；生活是洋，广不着边；而我如浪花，清澈透明并且舞动双手，仰望天空。]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://syxiaqj.github.io/"/>
-  <updated>2014-02-21T06:13:21.379Z</updated>
+  <updated>2014-02-23T08:17:02.017Z</updated>
   <id>http://syxiaqj.github.io/</id>
   
   <author>
@@ -13,6 +13,87 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[hexo命令及Markdown语法]]></title>
+    <link href="http://syxiaqj.github.io/2014/02/23/write-blog-with-markdown/"/>
+    <id>http://syxiaqj.github.io/2014/02/23/write-blog-with-markdown/</id>
+    <published>2014-02-23T05:39:18.000Z</published>
+    <updated>2014-02-23T08:15:30.000Z</updated>
+    <content type="html"><![CDATA[<p>到现在为止我们还没有自己写过一篇文章，你是不是已经跃跃欲试了！好了，马上就来介绍自己动手完成一篇博文。<br>这篇我们要介绍两部分内容，Markdown与hexo的常用命令。</p>
+<a id="more"></a>
+
+<h3 id="-markdown-"><strong>Markdown</strong></h3>
+<p>hexo是使用Markdown编辑文章的，我写的这些文章也都是用这种标记语言完成的。所以，我们先从Markdown说起。</p>
+<ul>
+<li>什么是Markdown</li>
+<li>Markdown语法</li>
+<li>例文</li>
+</ul>
+<p>你可以使用vim工具直接编辑md文件，也可以用记事本打开md文件编辑你的文章，也可以Markdown的编辑器编写，有很多在线的编辑器，何有不少客户端的编辑器，我是Mac系统，用的一个叫<a href="http://mouapp.com/" target="_blank"><strong>Mou</strong></a>的编辑器，还比较好使。Windows系统下，你可以自己找一下，应该也会有很好用的编辑器。</p>
+<h4 id="-markdown">什么是Markdown</h4>
+<p>Markdown 是一种轻量级标记语言，创始人为约翰·格鲁伯和亚伦·斯沃茨。它允许人们“使用易读易写的纯文本格式编写文档，然后转换成有效的XHTML文档”。  ——维基百科</p>
+<p>先简单介绍一下，Markdown的语法，具体怎么用，我相信大家一看例文就马上明白了。</p>
+<h4 id="markdown-">Markdown语法</h4>
+<p><strong>1、分段：</strong>  <code>两个回车</code></p>
+<p><strong>2、换行</strong>  <code>两个空格 + 回车</code></p>
+<p><strong>3、标题</strong> <code>#</code>~<code>######</code> 井号的个数表示几级标题，即Markdown可以表示一级标题到六级标题</p>
+<p><strong>4、引用</strong>  <code>&gt;</code></p>
+<p><strong>5、列表</strong> <code>*</code>，<code>+</code>，<code>-</code>，<code>1.</code>，选其中之一，注意后面有个空格</p>
+<p><strong>6、代码区块</strong>  <code>四个空格</code>开头</p>
+<p><strong>7、链接</strong>  <code>[文字](链接地址)</code></p>
+<p><strong>8、图片</strong>  <code>![图片说明](图片地址)</code>，图片地址可以是本地路劲，也可以是网络地址</p>
+<p><strong>9、强调</strong>  <code>**文字**</code>，<code>__文字__</code>，<code>_文字_</code>，<code>*文字*</code></p>
+<p><strong>10、代码</strong>  ```，`` </p>
+<p>下面来看看例文，你就马上明白，怎么来使用这些符号来写好一篇自己的博文了。</p>
+<h4 id="-">例文</h4>
+<p>在线编辑器例文：<a href="https://www.zybuluo.com/mdeditor" target="_blank">传送门</a></p>
+<p>Mou编辑器：<a href="http://mouapp.com/" target="_blank">下载地址</a></p>
+<p>你先试试，用Markdown怎么去些自己的文章，有了例子，还是很容易上手的。</p>
+<h3 id="-hexo-"><strong>hexo常用命令</strong></h3>
+<p>我们在前面的已经略微的接触了一些hexo的命令，如<code>hexo new &quot;my blog&quot;</code>，<code>hexo server</code>等。下面来介绍一下我们经常会用到的hexo命令</p>
+<p><strong>1、新建</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>hexo <span class="keyword">new</span> <span class="string">"my blog"</span>
+</pre></td></tr></table></figure>
+
+<p>新建的文件在<code>hexo/source/_posts/my-blog.md</code></p>
+<p><strong>2、编译</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>hexo <span class="keyword">generate</span>
+</pre></td></tr></table></figure>
+
+<p>一般部署上去的时候都需要编译一下，编译后，会出现一个<code>public</code>文件夹，将所有的md文件编译成html文件</p>
+<p><strong>3、开启本地服务</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>hexo <span class="keyword">server</span>
+</pre></td></tr></table></figure>
+
+<p>这个命令，我之前已经用过了，开启本地hexo服务用的</p>
+<p><strong>4、部署</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>hexo deploy
+</pre></td></tr></table></figure>
+
+<p>部署到git上的时候，需要用这个命令，下一篇中，我们会使用到这个命令</p>
+<p><strong>5、清除<code>public</code></strong></p>
+<p>hexo clean</p>
+<p>当<code>source</code>文件夹中的部分资源更改过之后，特别是对文件进行了删除或者路径的改变之后，需要执行这个命令，然后重新编译。</p>
+<p>以上这些都是我在使用过程中经常用到的一些hexo命令。最为详细、最为全面的说明文档当然还是在<a href="http://zespia.tw/hexo/docs/commands.html" target="_blank">官网</a>。请各位猛戳。</p>
+<h3 id="-"><strong>后记</strong></h3>
+<p>OK，下一篇介绍hexo这个系列的最后一篇文章《如何讲博客部署到git上》。</p>
+<p><strong><em>大家如果有什么疑问，欢迎通过留言、微博等多种途径进行交流</em></strong></p>
+]]></content>
+    <summary type="html"><![CDATA[<p>到现在为止我们还没有自己写过一篇文章，你是不是已经跃跃欲试了！好了，马上就来介绍自己动手完成一篇博文。<br>这篇我们要介绍两部分内容，Markdown与hexo的常用命令。</p>
+]]></summary>
+    
+      <category term="hexo" scheme="http://syxiaqj.github.io/tags/hexo/"/>
+    
+      <category term="Mac" scheme="http://syxiaqj.github.io/tags/Mac/"/>
+    
+      <category term="hexo" scheme="http://syxiaqj.github.io/categories/hexo/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[hexo主题]]></title>
