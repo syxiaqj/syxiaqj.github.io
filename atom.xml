@@ -4,7 +4,7 @@
   <subtitle><![CDATA[技术是海，深不见底；生活是洋，广不着边；而我如浪花，清澈透明并且舞动双手，仰望天空。]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://syxiaqj.github.io/"/>
-  <updated>2014-02-23T08:17:02.017Z</updated>
+  <updated>2014-02-24T06:20:05.237Z</updated>
   <id>http://syxiaqj.github.io/</id>
   
   <author>
@@ -13,6 +13,84 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[将我们的hexo站点部署到git]]></title>
+    <link href="http://syxiaqj.github.io/2014/02/24/deploy-to-github/"/>
+    <id>http://syxiaqj.github.io/2014/02/24/deploy-to-github/</id>
+    <published>2014-02-24T02:41:30.000Z</published>
+    <updated>2014-02-24T06:19:45.000Z</updated>
+    <content type="html"><![CDATA[<p>直奔主题，让我们来完成hexo的最后一步，将我们的博客部署到git上。让我们的经历，分享给别人，并且让自己博客成为一个跟别人探讨问题，交流技术生活的平台。OK，Let&#39;s begin step by step.</p>
+<a id="more"></a>
+
+<h3 id="-github-"><strong>注册一个GitHub账户</strong></h3>
+<p>注册GitHub账号，不管有账号的没账号的，不解释。</p>
+<h3 id="-repository-"><strong>建立一个repository</strong></h3>
+<p>这一步，非常重要，也比较有讲究。repository的命名有两种方式，并且对应的也会有两种hexo的配置方法。</p>
+<p><strong>1、yourname.github.io：</strong></p>
+<p><strong>2、随意命名，如Blog：</strong></p>
+<p>建议使用第一种方式，两种命名方式均可，但是请注意后面的步骤，不同的命名方式需要不同的操作。</p>
+<h3 id="-github-pages-"><strong>新建GitHub Pages</strong></h3>
+<p>先来了解一下，什么是<a href="https://help.github.com/articles/what-are-github-pages" target="_blank">GitHub Pages</a>。GitHub Pages有User/Organization Pages 和 Project Pages之分，具体的说明，请看<a href="https://help.github.com/articles/user-organization-and-project-pages" target="_blank">说明</a>。</p>
+<p>下面图文说明，如何新建一个GitHub Pages</p>
+<p>第一步：</p>
+<p><img src="/image/deploy-to-github/git_setting.png" alt="点击setting"></p>
+<p>第二步：</p>
+<p><img src="/image/deploy-to-github/git_createGitPages.png" alt="新建GitHub Pages"></p>
+<p>如果的repository的命名是<code>yourname.github.io</code>这样的方式，你的GitHub Pages的域名就是<code>yourname.github.io</code>，这就是User/Organization Pages。<br>如果你的repository的命名是<code>projectname</code>，那么GitHub Pages的域名就是<code>username.github.io/projectname</code>，这就是所谓的Project Pages。</p>
+<p>没关系，both ok！</p>
+<h3 id="-hexo-"><strong>配置hexo</strong></h3>
+<p>编辑hexo目录下的<code>_config.yml</code>文件，配置一下几项：</p>
+<p>修改URL项</p>
+<pre><code># URL
+## If your site is put in a subdirectory, set url as &#39;http://yoursite.com/child&#39; and root as &#39;/child/&#39;
+url: http://syxiaqj.github.io    #GitHub Pages域名
+root: /                #Project Pages 填 /projectname
+permalink: :year/:month/:day/:title/
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+</code></pre><p>修改Deployment项</p>
+<pre><code># Deployment
+## Docs: http://zespia.tw/hexo/docs/deployment.html
+deploy:
+  type: github
+  repository: https://...        #你GitHub Pages的URl全路径
+  branch: master            #如果是Project Pages，这里填gh-pages
+</code></pre><p>重申一下，GitHub Pages分为User/Organization Pages 和 Project Pages，各位不要看错。</p>
+<h3 id="-"><strong>部署</strong></h3>
+<p>运行命令</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>hexo <span class="keyword">generate</span>
+hexo deploy
+</pre></td></tr></table></figure>
+
+<p>上面的两行命令，等于下面一行命令</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>hexo g <span class="operator">-d</span>
+</pre></td></tr></table></figure>
+
+<p><code>g</code>是<code>generate</code>的简写，<code>d</code>是<code>deploy</code>的简写</p>
+<h3 id="-github-pages-"><strong>访问你的GitHub Pages</strong></h3>
+<p>在浏览器输入GitHub Pages的链接，如<code>yourname.github.io</code> or <code>yourname.github.io/projectname</code>，访问一下，我擦，怎么还是GitHub Pages的默认页。亲，不要着急，GitHub的部署会有最长10分钟的延迟，等会你再访问一下就好了。</p>
+<h3 id="-"><strong>后记</strong></h3>
+<p>OK，经过一番努力，用hexo这个框架搭建一个我们自己的博客终于搞定了。祝你在积累与分享的路上能够收获更多的东西！</p>
+<p><em>工作之余，花了一周多的时间终于将hexo这个系列的东西整理完成了。一件事情完成，总是令人高兴的，就像自己把hexo搭起来的时候；亦或是第一篇博文写完，发布的时候。写博客的无疑是一件花时间的事情，但是在自己整理的过程中会有新的认识与理解，这非常好。</em></p>
+<p><em>接下来有什么打算呢？最近正在学习一个开源框架Beeframework，会把我学习心得与成果整理出来。中间也会穿插一下Cocos2d-x的内容，游戏开发我也在学习</em></p>
+<p><strong><em>大家有什么问题，欢迎通过留言、微博等多种途径进行交流</em></strong></p>
+]]></content>
+    <summary type="html"><![CDATA[<p>直奔主题，让我们来完成hexo的最后一步，将我们的博客部署到git上。让我们的经历，分享给别人，并且让自己博客成为一个跟别人探讨问题，交流技术生活的平台。OK，Let&#39;s begin step by step.</p>
+]]></summary>
+    
+      <category term="hexo" scheme="http://syxiaqj.github.io/tags/hexo/"/>
+    
+      <category term="Mac" scheme="http://syxiaqj.github.io/tags/Mac/"/>
+    
+      <category term="hexo" scheme="http://syxiaqj.github.io/categories/hexo/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[hexo命令及Markdown语法]]></title>

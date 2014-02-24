@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hello, My blog | 浪花一朵朵</title>
+  <title>将我们的hexo站点部署到git | 浪花一朵朵</title>
   <meta name="author" content="员员">
   
   <meta name="description" content="浪花一朵朵，员员">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Hello, My blog"/>
+  <meta property="og:title" content="将我们的hexo站点部署到git"/>
   <meta property="og:site_name" content="浪花一朵朵"/>
 
   
@@ -58,39 +58,76 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-02-11T06:18:36.000Z"><a href="/2014/02/11/hello-my-blog/">2月 11 2014</a></time>
+        <time datetime="2014-02-24T02:41:30.000Z"><a href="/2014/02/24/deploy-to-github/">2月 24 2014</a></time>
       
       
   
-    <h1 class="title">Hello, My blog</h1>
+    <h1 class="title">将我们的hexo站点部署到git</h1>
   
 
     </header>
     <div class="entry">
       
-        <p>经过一番摸索与学习，这个博客算是基本搭起来了，先给自己鼓掌一下（嘿嘿）。</p>
-<p>从此开启博客，在这里记录自己的学习与生活。希望若干时间以后，回头看看，还能记起当初的时间花在哪里了。</p>
-<p>第一篇博文，就说说这个博客的诞生与打算吧。</p>
-<p><a id="more"></a></p>
-<h3 id="-"><strong>为什么打算写博客了</strong></h3>
-<p>时间老人，从来不曾停下自己的脚步。看似也比较努力的人，当自己坐下来想想，做成过什么事情的时候，却也乏善可陈。我想，我应该把自己的的学习生活，记录一下了。特别作为一名技术人员，技术的积累也非常重要。就像计算机的内存毕竟有限，大量的数据还是需要借助硬盘来储存下来一样，大脑虽然还是，却也“好记性不如烂笔头”。</p>
-<h3 id="-"><strong>为什么要自己搭建一个博客</strong></h3>
-<p>现在各大门户与一些专门的博客网站上去建一个自己的博客，也是非常方便的。自己搭建一个博客，有麻烦有费事，为什么呢？作为一名技术人员，当然希望玩一玩新鲜的技术（利用开源框架搭建自己的博客，也已经不是什么特别新鲜的东西了，只是对于我来说，这是第一次尝试），这也算一种探索精神吧。能自己动手建立一个自己的博客，用shell工具写博客，用命令行发布博客，这是一件多么cool的事情。有种黑客的赶脚，瞬间就高大上了，有木有。这才是能体现干技术的价值嘛！</p>
-<h3 id="-hexo-"><strong>为什么要hexo这个开源框架</strong></h3>
-<p>先对这个开源框架的作者<a href="https://github.com/tommy351/hexo" target="_blank">tommy351</a>崇拜一下，来自海峡对岸，据说是位大学生。至于hexo到底是个什么，我只知道是个基于node.js搭建静态博客的开源框架，江湖传言它快速、简单、功能强大。虽然我也没用过jekyll、Octopress、Wordpress，但是大家用过都说hexo好，我想，那就它了。链接：<a href="http://zespia.tw/hexo/" target="_blank">hexo官网</a></p>
-<h3 id="-"><strong>搭建这个博客不容易</strong></h3>
-<p>问题一，node.js安装有问题。作为一个ios开发人员，对于node.js毫无概念，虽说只要安装一下node就好了，安装包也能下载，但就是安装有问题，在install hexo的时候，一直报错。这个问题折腾了我很久，后来让服务端懂node.js的大哥，帮我卸载重装了。<br>问题二，上传git后不会使用git pages，主要也是没有用过，现在基本上会用了。<br>问题三，hexo的文件结构尚不是很清楚，当然主要也是刚开始用，想自己改改页面布局的时候，就有点不知所错了，生怕改错点什么。<br>这里就不再赘述了，下次会好好把所有的问题都整理一下。</p>
-<h3 id="-"><strong>感谢</strong></h3>
-<p>对于我这样的小白而言，能把这个博客搭建起来，是离不开别人的帮助的。网上的资料，主要来自<a href="http://zipperary.com/categories/hexo/" target="_blank">zippera</a>，感谢他的分享。对于小白而言，有时候其实是看不懂资料的，很多不懂的问题，都问一个人称“刘指导”的<a href="http://weibo.com/jimnox" target="_blank">吉姆</a>，非常感谢他的耐心指导。还要感谢，单位的胖子，帮我搞定node.js的安装。</p>
-<h3 id="-"><strong>打算</strong></h3>
-<p>这个博客，还是以写技术为主，打算能每周更新一篇技术博文。希望能坚持住！</p>
+        <p>直奔主题，让我们来完成hexo的最后一步，将我们的博客部署到git上。让我们的经历，分享给别人，并且让自己博客成为一个跟别人探讨问题，交流技术生活的平台。OK，Let&#39;s begin step by step.</p>
+<a id="more"></a>
+
+<h3 id="-github-"><strong>注册一个GitHub账户</strong></h3>
+<p>注册GitHub账号，不管有账号的没账号的，不解释。</p>
+<h3 id="-repository-"><strong>建立一个repository</strong></h3>
+<p>这一步，非常重要，也比较有讲究。repository的命名有两种方式，并且对应的也会有两种hexo的配置方法。</p>
+<p><strong>1、yourname.github.io：</strong></p>
+<p><strong>2、随意命名，如Blog：</strong></p>
+<p>建议使用第一种方式，两种命名方式均可，但是请注意后面的步骤，不同的命名方式需要不同的操作。</p>
+<h3 id="-github-pages-"><strong>新建GitHub Pages</strong></h3>
+<p>先来了解一下，什么是<a href="https://help.github.com/articles/what-are-github-pages" target="_blank">GitHub Pages</a>。GitHub Pages有User/Organization Pages 和 Project Pages之分，具体的说明，请看<a href="https://help.github.com/articles/user-organization-and-project-pages" target="_blank">说明</a>。</p>
+<p>下面图文说明，如何新建一个GitHub Pages</p>
+<p>第一步：</p>
+<p><img src="/image/deploy-to-github/git_setting.png" alt="点击setting"></p>
+<p>第二步：</p>
+<p><img src="/image/deploy-to-github/git_createGitPages.png" alt="新建GitHub Pages"></p>
+<p>如果的repository的命名是<code>yourname.github.io</code>这样的方式，你的GitHub Pages的域名就是<code>yourname.github.io</code>，这就是User/Organization Pages。<br>如果你的repository的命名是<code>projectname</code>，那么GitHub Pages的域名就是<code>username.github.io/projectname</code>，这就是所谓的Project Pages。</p>
+<p>没关系，both ok！</p>
+<h3 id="-hexo-"><strong>配置hexo</strong></h3>
+<p>编辑hexo目录下的<code>_config.yml</code>文件，配置一下几项：</p>
+<p>修改URL项</p>
+<pre><code># URL
+## If your site is put in a subdirectory, set url as &#39;http://yoursite.com/child&#39; and root as &#39;/child/&#39;
+url: http://syxiaqj.github.io    #GitHub Pages域名
+root: /                #Project Pages 填 /projectname
+permalink: :year/:month/:day/:title/
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+</code></pre><p>修改Deployment项</p>
+<pre><code># Deployment
+## Docs: http://zespia.tw/hexo/docs/deployment.html
+deploy:
+  type: github
+  repository: https://...        #你GitHub Pages的URl全路径
+  branch: master            #如果是Project Pages，这里填gh-pages
+</code></pre><p>重申一下，GitHub Pages分为User/Organization Pages 和 Project Pages，各位不要看错。</p>
+<h3 id="-"><strong>部署</strong></h3>
+<p>运行命令</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>hexo <span class="keyword">generate</span>
+hexo deploy
+</pre></td></tr></table></figure>
+
+<p>上面的两行命令，等于下面一行命令</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>hexo g <span class="operator">-d</span>
+</pre></td></tr></table></figure>
+
+<p><code>g</code>是<code>generate</code>的简写，<code>d</code>是<code>deploy</code>的简写</p>
+<h3 id="-github-pages-"><strong>访问你的GitHub Pages</strong></h3>
+<p>在浏览器输入GitHub Pages的链接，如<code>yourname.github.io</code> or <code>yourname.github.io/projectname</code>，访问一下，我擦，怎么还是GitHub Pages的默认页。亲，不要着急，GitHub的部署会有最长10分钟的延迟，等会你再访问一下就好了。</p>
 <h3 id="-"><strong>后记</strong></h3>
-<p>大家都叫我<a href="http://weibo.com/109028053" target="_blank">员员</a>。</p>
-<p>一直是个技术的小白，曾经不知道技术为何物，甚至不敢在电脑上装QQ（看观莫笑），第一堂程序课，找不到老师说的“输入”在哪，很久以后才知道原来，就是控制台打一行代码<code>cin&gt;&gt;a</code>。</p>
-<p>现在做iOS开发，却深感技艺不精，所以要努力学习。</p>
-<p>关注社会时事热点，听别人的意见，并且有自己的判断。明白，生存是最基本的奋斗目标，当然，心存诗与远方。</p>
-<p>技术是海，深不见底；生活是洋，广不着边；而我如浪花，清澈透明并且舞动双手，仰望天空。</p>
-<p>加油！</p>
+<p>OK，经过一番努力，用hexo这个框架搭建一个我们自己的博客终于搞定了。祝你在积累与分享的路上能够收获更多的东西！</p>
+<p><em>工作之余，花了一周多的时间终于将hexo这个系列的东西整理完成了。一件事情完成，总是令人高兴的，就像自己把hexo搭起来的时候；亦或是第一篇博文写完，发布的时候。写博客的无疑是一件花时间的事情，但是在自己整理的过程中会有新的认识与理解，这非常好。</em></p>
+<p><em>接下来有什么打算呢？最近正在学习一个开源框架Beeframework，会把我学习心得与成果整理出来。中间也会穿插一下Cocos2d-x的内容，游戏开发我也在学习</em></p>
+<p><strong><em>大家有什么问题，欢迎通过留言、微博等多种途径进行交流</em></strong></p>
 
       
     </div>
@@ -99,13 +136,13 @@
         
   
   <div class="categories">
-    <a href="/categories/杂记/">杂记</a>
+    <a href="/categories/hexo/">hexo</a>
   </div>
 
         
   
   <div class="tags">
-    <a href="/tags/杂记/">杂记</a>
+    <a href="/tags/hexo/">hexo</a>, <a href="/tags/Mac/">Mac</a>
   </div>
 
         
