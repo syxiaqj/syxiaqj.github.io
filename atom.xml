@@ -4,7 +4,7 @@
   <subtitle><![CDATA[技术是海，深不见底；生活是洋，广不着边；而我如浪花，清澈透明并且舞动双手，仰望天空。]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://syxiaqj.github.io/"/>
-  <updated>2014-02-28T15:24:53.351Z</updated>
+  <updated>2014-02-28T16:35:29.552Z</updated>
   <id>http://syxiaqj.github.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://syxiaqj.github.io/2014/02/28/bee-learning-1/"/>
     <id>http://syxiaqj.github.io/2014/02/28/bee-learning-1/</id>
     <published>2014-02-28T15:01:27.000Z</published>
-    <updated>2014-02-28T15:24:47.000Z</updated>
+    <updated>2014-02-28T16:35:15.000Z</updated>
     <content type="html"><![CDATA[<p><img src="/image/bee-learning-1/beeframework.png" alt="BeeFramework"></p>
 <p>之前在<a href="http://www.infoq.com/cn/news/2014/01/interview-author-guohongyu" target="_blank">InfoQ</a>上看到<a href="http://weibo.com/tangqiaoboy?topnav=1&amp;wvr=5&amp;topsug=1" target="_blank">唐巧</a>对<a href="http://weibo.com/gavinkwoe" target="_blank">老郭</a>的采访，采访的内容就是关于BeeFramework。看完那篇采访，感觉应该是个不错的框架，于是乎想学一学。正好，这段时间，工作上有点空闲。也把自己的学习过程记录一下。</p>
 <ul>
@@ -69,6 +69,7 @@
 <p>轻松搞定给上百个文件添加<code>-fno-objc-arc</code>的工作。让我们来膜拜一下<a href="http://weibo.com/u/2987815507" target="_blank">QFish</a>大神，这是他的杰作！</p>
 <p>构建工程完成，编译运行，搞定！</p>
 <p>只是现在除了启动页，页面显示的一片黑色，就像我们学习BeeFramework一样，才刚刚起步，什么也不知道。下面我们尝试着给项目添加一些内容，让它看起来不那么单调。</p>
+<p><strong>你也可以用CocoaPods来管理BeeFramework，CocoaPods会帮你做好上面的3、4两步。如何使用CocoaPods，详见<a href="http://syxiaqj.github.io/2014/02/13/how-to-use-cocoapods-in-ios-project/">这里</a></strong></p>
 <h3 id="-"><strong>写第一个界面</strong></h3>
 <p><strong>首先，我们添加一个<code>AppBoard_iPhone.xml</code></strong></p>
 <p>BeeFramework是一个用XML+CSS页面布局的框架，利用模板新建的项目中有<code>AppBoard_iPhone.h</code>，<code>AppBoard_iPhone.m</code>，却没有<code>AppBoard_iPhone.xml</code>，需要我们自己添加。</p>
