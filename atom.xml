@@ -4,7 +4,7 @@
   <subtitle><![CDATA[技术是海，深不见底；生活是洋，广不着边；而我如浪花，清澈透明并且舞动双手，仰望天空。]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://syxiaqj.github.io/"/>
-  <updated>2014-02-27T04:18:01.717Z</updated>
+  <updated>2014-02-28T15:10:31.853Z</updated>
   <id>http://syxiaqj.github.io/</id>
   
   <author>
@@ -13,6 +13,182 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[初学BeeFramework]]></title>
+    <link href="http://syxiaqj.github.io/2014/02/28/bee-learning-1/"/>
+    <id>http://syxiaqj.github.io/2014/02/28/bee-learning-1/</id>
+    <published>2014-02-28T15:01:27.000Z</published>
+    <updated>2014-02-28T15:09:51.000Z</updated>
+    <content type="html"><![CDATA[<p><img src="/image/bee-learning-1/beeframework.png" alt="BeeFramework"></p>
+<p>之前在<a href="http://www.infoq.com/cn/news/2014/01/interview-author-guohongyu" target="_blank">InfoQ</a>上看到<a href="http://weibo.com/tangqiaoboy?topnav=1&amp;wvr=5&amp;topsug=1" target="_blank">唐巧</a>对<a href="http://weibo.com/gavinkwoe" target="_blank">老郭</a>的采访，采访的内容就是关于BeeFramework。看完那篇采访，感觉应该是个不错的框架，于是乎想学一学。正好，这段时间，工作上有点空闲。也把自己的学习过程记录一下。</p>
+<ul>
+<li>简介BeeFramework</li>
+<li>新建Bee项目</li>
+<li>第一个界面</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="-beeframework-"><strong>简介BeeFramework</strong></h3>
+<p>BeeFramework是一个semi-hybrid（半混合）框架，运用XML、CSS、Objective-C构建iOS应用，基于MVC，并且适用于大型App的开发，已经有诸如QQ空间、屈臣氏中国等相当成熟的产品。</p>
+<p>这个框架，初初体验的感觉，利用XML+CSS开发效率应该会提高很多。当前的最新的版本0.5.0，并且作者说打算在1.0版本打算做跨平台。</p>
+<p>高效、跨平台，这样的框架无论这对开发者还是公司，都会爱不释手的！</p>
+<p>作者：<a href="http://weibo.com/gavinkwoe" target="_blank">郭虹宇</a>    <a href="http://weibo.com/u/2987815507" target="_blank">QFish</a></p>
+<p>项目地址：<a href="https://github.com/gavinkwoe/BeeFramework" target="_blank">GitHub</a></p>
+<p>对于框架的详细说明，在《developer_manual》文档中又较为详细的说明，文档在项目的document目录下，各位自己找找。这里就不多做介绍了。</p>
+<h3 id="-bee-"><strong>新建Bee项目</strong></h3>
+<p><em>我使用的BeeFramework的版本是0.5.0的，不同版本之间会有一些差异，特此说明一下。</em></p>
+<p>对于新知识，理解很重要，当然感觉也很重要。我们先不急着来分析Bee的框架结构，首先，我们来构建一个Bee工程，感觉一下BeeFramework。</p>
+<p>构建项目之前有些准备工作需要完成：</p>
+<p>1、下载<a href="https://github.com/gavinkwoe/BeeFramework" target="_blank">BeeFramework</a></p>
+<p>2、下载Bee项目模板：<a href="https://github.com/qfish/Bee-Xcode-Template.git" target="_blank">Bee-Xcode-Template-master</a></p>
+<p>3、下载一个小工具：<a href="https://github.com/qfish/xproj.git" target="_blank">xproj</a>，用来批量进行ARC、非ARC混编的shell脚本。</p>
+<p>OK，准备就绪，开始新建Bee工程，我们图文并茂，一步一步来。</p>
+<p><strong>1、安装Bee项目模板</strong></p>
+<p>解压Bee-Xcode-Template-master，终端cd到该目录，执行以下命令</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>sh <span class="keyword">install</span>.sh
+</pre></td></tr></table></figure>
+
+<p><strong>2、新建Bee项目</strong></p>
+<p><img src="/image/bee-learning-1/BeeTemplateProject.png" alt="Bee-Template-Project"></p>
+<p>运用模板新建的Bee项目，工程框架已经基本有了。结构应该是这样的</p>
+<p><img src="/image/bee-learning-1/BeeProjectDir.png" alt="Bee-Project-Dir"></p>
+<p>编译一下（Cmd+B），项目有错误，提示<code>Bee.h</code>引用找不到。不着急，我们还没有把BeeFramework框架添加进来。</p>
+<p><strong>3、添加BeeFramework</strong></p>
+<p>在工程中添加BeeFramework框架项目中的<code>framework</code>文件夹</p>
+<p><img src="/image/bee-learning-1/AddFramework.png" alt="Add-Framework"></p>
+<p><strong>4、批量添加<code>-fno-objc-arc</code></strong></p>
+<p>因为BeeFramework是一个非RAC的框架，现在Xcode5.0以后新建的工程，都默认是ARC工程，所以需要对BeeFramework进行混编处理。</p>
+<p><code>framework</code>目录下的所有文件都需要在Build Phases中添加<code>-fno-objc-arc</code>，但是文件非常多，一个个添加，我相信，你会疯掉的。此时，你就需要用到这个小工具：<a href="https://github.com/qfish/xproj.git" target="_blank">xproj</a>。</p>
+<p>解压后，将xproj拷贝到工程的根目录下，终端cd到工程的根目录，然后运行下面命令</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>sh xproj <span class="attribute">-s</span> 需要添加编译参数的文件所在的文件夹 <span class="attribute">-t</span> 目标工程文件
+</pre></td></tr></table></figure>
+
+<p>轻松搞定给上百个文件添加<code>-fno-objc-arc</code>的工作。让我们来膜拜一下<a href="http://weibo.com/u/2987815507" target="_blank">QFish</a>大神，这是他的杰作！</p>
+<p>构建工程完成，编译运行，搞定！</p>
+<p>只是现在除了启动页，页面显示的一片黑色，就像我们学习BeeFramework一样，才刚刚起步，什么也不知道。下面我们尝试着给项目添加一些内容，让它看起来不那么单调。</p>
+<h3 id="-"><strong>写第一个界面</strong></h3>
+<p><strong>首先，我们添加一个<code>AppBoard_iPhone.xml</code></strong></p>
+<p>BeeFramework是一个用XML+CSS页面布局的框架，利用模板新建的项目中有<code>AppBoard_iPhone.h</code>，<code>AppBoard_iPhone.m</code>，却没有<code>AppBoard_iPhone.xml</code>，需要我们自己添加。</p>
+<p><img src="/image/bee-learning-1/AddXml.png" alt="Add-Xml"></p>
+<p>修改<code>AppBoard_iPhone.xml</code>文件中内容如下</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre></td><td class="code"><pre><span class="pi">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="tag">&lt;<span class="title">ui</span> <span class="attribute">namespace</span>=<span class="value">"AppBoard_iPhone"</span>&gt;</span>
+	<span class="tag">&lt;<span class="title">linear</span> <span class="attribute">orientation</span>=<span class="value">"h"</span> <span class="attribute">class</span>=<span class="value">"wrapper"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">image</span> <span class="attribute">class</span>=<span class="value">"bg"</span>/&gt;</span>
+        <span class="tag">&lt;<span class="title">view</span> <span class="attribute">class</span>=<span class="value">"view blue"</span>/&gt;</span>
+    <span class="tag">&lt;/<span class="title">linear</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">style</span> <span class="attribute">type</span>=<span class="value">"text/css"</span>&gt;</span><span class="css">
+        <span class="class">.wrapper</span> <span class="rules">{
+        <span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">100</span>%</span></span>;
+        <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">100</span>%</span></span>;
+        <span class="rule">}</span></span>
+        <span class="class">.view</span> <span class="rules">{
+        <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">50</span>%</span></span>;
+        <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">100</span>px</span></span>;
+        <span class="rule"><span class="attribute">border-radius</span>:<span class="value"> <span class="number">10</span>px</span></span>;
+        <span class="rule">}</span></span>
+        <span class="class">.blue</span> <span class="rules">{
+        <span class="rule"><span class="attribute">background-color</span>:<span class="value"> <span class="hexcolor">#007DBC</span></span></span>;
+        <span class="rule">}</span></span>
+        <span class="class">.bg</span> <span class="rules">{
+        <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">100</span>%</span></span>;
+        <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">100</span>%</span></span>;
+        <span class="rule"><span class="attribute">position</span>:<span class="value"> absolute</span></span>;
+        <span class="rule"><span class="attribute">background-color</span>:<span class="value"> <span class="hexcolor">#E6E6FA</span></span></span>;
+        <span class="rule">}</span></span>
+    </span><span class="tag">&lt;/<span class="title">style</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">ui</span>&gt;</span>
+</pre></td></tr></table></figure>
+
+<p><strong>然后，修改<code>AppDalegate</code></strong></p>
+<p>找到AppDalegate中的<code>- (void)load</code>，修改如下</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="code"><pre>bee<span class="preprocessor">.ui</span><span class="preprocessor">.config</span><span class="preprocessor">.ASR</span> = YES<span class="comment">;	//这句很重要</span>
+    
+if ( [BeeSystemInfo isDevicePad] )
+{
+//self<span class="preprocessor">.window</span><span class="preprocessor">.rootViewController</span> = [AppBoard_iPad sharedInstance]<span class="comment">;</span>
+	self<span class="preprocessor">.window</span><span class="preprocessor">.rootViewController</span> = [BeeUIStack stackWithFirstBoard:[AppBoard_iPhone sharedInstance]]<span class="comment">;</span>
+}
+else
+{
+//self<span class="preprocessor">.window</span><span class="preprocessor">.rootViewController</span> = [AppBoard_iPhone sharedInstance]<span class="comment">;</span>
+	self<span class="preprocessor">.window</span><span class="preprocessor">.rootViewController</span> = [BeeUIStack stackWithFirstBoard:[AppBoard_iPhone sharedInstance]]<span class="comment">;</span>
+</pre></td></tr></table></figure>
+
+<p><strong>最后，修改<code>AppBoard_iPhone.m</code></strong></p>
+<p><code>AppBoard_iPhone.m</code>中有个<code>ON_CREATE_VIEWS</code>方法，添加如下内容</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="keyword">self</span><span class="variable">.navigationBarShown</span> = <span class="literal">YES</span>;
+<span class="keyword">self</span><span class="variable">.navigationBarTitle</span> = @<span class="string">"浪花一朵朵"</span>;
+    
+<span class="keyword">self</span><span class="variable">.view</span><span class="variable">.backgroundColor</span> = SHORT_RGB(<span class="number">0x444</span>);
+</pre></td></tr></table></figure>
+
+<p>编译，运行！效果如下</p>
+<p><img src="/image/bee-learning-1/Result.png" alt="Bee-Result"></p>
+<p>虽然，页面还是很简陋，不过没关系，至少页面已经有内容了哦！继续加油学习！</p>
+<p><strong><em>大家有问题，欢迎通过留言、微博等多种途径进行交流</em></strong></p>
+]]></content>
+    <summary type="html"><![CDATA[<p><img src="/image/bee-learning-1/beeframework.png" alt="BeeFramework"></p>
+<p>之前在<a href="http://www.infoq.com/cn/news/2014/01/interview-author-guohongyu" target="_blank">InfoQ</a>上看到<a href="http://weibo.com/tangqiaoboy?topnav=1&amp;wvr=5&amp;topsug=1" target="_blank">唐巧</a>对<a href="http://weibo.com/gavinkwoe" target="_blank">老郭</a>的采访，采访的内容就是关于BeeFramework。看完那篇采访，感觉应该是个不错的框架，于是乎想学一学。正好，这段时间，工作上有点空闲。也把自己的学习过程记录一下。</p>
+<ul>
+<li>简介BeeFramework</li>
+<li>新建Bee项目</li>
+<li>第一个界面</li>
+</ul>
+]]></summary>
+    
+      <category term="Bee" scheme="http://syxiaqj.github.io/tags/Bee/"/>
+    
+      <category term="iOS" scheme="http://syxiaqj.github.io/tags/iOS/"/>
+    
+      <category term="Bee" scheme="http://syxiaqj.github.io/categories/Bee/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[将我们的hexo站点部署到git]]></title>
