@@ -4,7 +4,7 @@
   <subtitle><![CDATA[技术是海，深不见底；生活是洋，广不着边；而我如浪花，清澈透明并且舞动双手，仰望天空。]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://syxiaqj.github.io/"/>
-  <updated>2014-02-28T16:37:39.168Z</updated>
+  <updated>2014-03-02T13:59:18.353Z</updated>
   <id>http://syxiaqj.github.io/</id>
   
   <author>
@@ -13,6 +13,85 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Mac重装OS X Mavericks]]></title>
+    <link href="http://syxiaqj.github.io/2014/03/02/install-mac-os/"/>
+    <id>http://syxiaqj.github.io/2014/03/02/install-mac-os/</id>
+    <published>2014-03-02T13:49:39.000Z</published>
+    <updated>2014-03-02T13:58:26.000Z</updated>
+    <content type="html"><![CDATA[<p>这个周末帮我朋友重装了一下Mac系统，花了我一番周折，我想，应该把这个过程记录一下，让下一次重装有迹可循。看到这些文字的朋友，如果你有需要，希望也能帮助到你。</p>
+<p>本次重装是U盘启动安装，重装的Mac系统版本是<strong>Mac OS 10.9</strong>。下面图文记录过程。</p>
+<ul>
+<li>下载系统</li>
+<li>制作启动U盘</li>
+<li>安装OS X Mavericks</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="-"><strong>下载系统</strong></h3>
+<p>下载地址：<a href="https://itunes.apple.com/cn/app/os-x-mavericks/id675248567?mt=12&amp;ign-mpt=uo%3D4" target="_blank">官网</a>、<a href="http://pan.baidu.com/s/1ABL5d" target="_blank">百度云</a>、<a href="http://kuai.xunlei.com/d/xI86EALdNgBO2GZSad5" target="_blank">迅雷快传</a></p>
+<p>下载任何一个都OK，我是从官网下载的。</p>
+<h3 id="-u-"><strong>制作启动U盘</strong></h3>
+<p>这也是我安装过程中最为折腾的一个环节，网上很多教程其实是对OS X 10.9之前版本的，但又无特别说明，所以按着教程做完，启动盘依然用不了，非常郁闷。特此，说明一下，我安装过程的是针对<strong>OS X 10.9</strong>的。</p>
+<p>1、准备一个至少8G的U盘</p>
+<p>2、终端执行下面命令，显示隐藏文件，我们会用到隐藏文件</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>defaults write ~/Library/Preferences/<span class="keyword">com</span><span class="preprocessor">.apple</span><span class="preprocessor">.finder</span> AppleShowAllFiles -bool true
+</pre></td></tr></table></figure>
+
+
+<p>然后重启Finder</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>killall Finder
+</pre></td></tr></table></figure>
+
+<p>3、打开下载的安装包，<code>安装OS X Mavericks.app</code>，右键“显示包内容”，找到在“Contents”目录下的&quot;SharedSupport&quot;目录，找到<code>InstallESD.dmg</code></p>
+<p><img src="/image/install-mac-os/OSXApp.png" alt="OS X App"></p>
+<p><img src="/image/install-mac-os/InstallESD.png" alt="InstallESD.dmg"></p>
+<p>4、找到<code>BaseSystem.dmg</code>，这是一个隐藏文件，刚我们显示隐藏文件了，能看到它。双击<code>InstallESD.dmg</code>，就看到了。</p>
+<p><img src="/image/install-mac-os/BaseSystem.png" alt="BaseSystem.dmg"></p>
+<p>5、用“磁盘工具”抹掉U盘。选中U盘，点击“分区” - “选项” - 选择“GUID”分区表（只有这种分区才能引导安装程序），格式为“Mac OS 扩展（日志式）”，命名随意，点击“应用”。</p>
+<p><strong>抹掉之前，切记备份资料</strong></p>
+<p><img src="/image/install-mac-os/CleanUDisk_1.png" alt="抹掉U盘">
+<img src="/image/install-mac-os/CleanUDisk_2.png" alt="抹掉U盘-选项"></p>
+<p>6、将<code>BaseSystem.dmg</code>恢复到我们的U盘。选中我们U盘，“源磁盘”为<code>BaseSystem.dmg</code>（可拖动），“目的磁盘”为我们的U盘（可拖动），点击恢复，输入密码，恢复开始，这一步会花一些时间，耐心等待一会儿。</p>
+<p><strong>这步很重要，因为制作OS X 10.9启动U盘跟制作OS X 10.8的启动U盘，这一步是不一样的，大家要格外注意，我就是这步不对，一直搞不定！</strong></p>
+<p><img src="/image/install-mac-os/ReCoverBaseSystem.png" alt="恢复BaseSystem到U盘"></p>
+<p>我们的启动U盘基本完成，但还是差两步，马上就好了，不着急！</p>
+<p>7、删除U盘中System/Installation目录下Packages替身文件，如下图</p>
+<p><img src="/image/install-mac-os/DeletePackages.png" alt="删除Packages"></p>
+<p>8、将InstallESD.dmg目录下的Packages目录拷贝到U盘的System/Installation中。</p>
+<p>9、运行，下面命令将隐藏文件隐藏</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>defaults write <span class="keyword">com</span><span class="preprocessor">.apple</span><span class="preprocessor">.finder</span> AppleShowAllFiles NO
+</pre></td></tr></table></figure>
+
+<p>OK，到此我们的启动U盘制作完成了，终于可以开始重装系统了！</p>
+<h3 id="-os-x-mavericks-"><strong>安装OS X Mavericks</strong></h3>
+<p>OK，重启电脑，按住option，从U盘启动，下面就按部就班的来了。</p>
+<p>因为之前电脑分了好几个盘，我把所有盘都合并成一个。如果你也需要用到这个，那就在安装的第一个界面里，左上角的地方找磁盘工具（这里恕我无法截图），对电脑的硬盘进行分区合并处理，这一步跟制作启动U盘时，格式化U盘是一模一样的，Mac OS 扩展（日志式），GUID分区表。</p>
+<p>接下来，就没有难度了，一帆风顺，马上搞定！</p>
+<p><strong><em>有问题，欢迎通过留言、微博等方式进行沟通</em></strong></p>
+]]></content>
+    <summary type="html"><![CDATA[<p>这个周末帮我朋友重装了一下Mac系统，花了我一番周折，我想，应该把这个过程记录一下，让下一次重装有迹可循。看到这些文字的朋友，如果你有需要，希望也能帮助到你。</p>
+<p>本次重装是U盘启动安装，重装的Mac系统版本是<strong>Mac OS 10.9</strong>。下面图文记录过程。</p>
+<ul>
+<li>下载系统</li>
+<li>制作启动U盘</li>
+<li>安装OS X Mavericks</li>
+</ul>
+]]></summary>
+    
+      <category term="Mac" scheme="http://syxiaqj.github.io/tags/Mac/"/>
+    
+      <category term="Mavericks" scheme="http://syxiaqj.github.io/tags/Mavericks/"/>
+    
+      <category term="10.9" scheme="http://syxiaqj.github.io/tags/10.9/"/>
+    
+      <category term="Mac" scheme="http://syxiaqj.github.io/categories/Mac/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[初识BeeFramework]]></title>
