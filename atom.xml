@@ -4,7 +4,7 @@
   <subtitle><![CDATA[技术是海，深不见底；生活是洋，广不着边；而我如浪花，清澈透明并且舞动双手，仰望天空。]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://syxiaqj.github.io/"/>
-  <updated>2014-05-15T15:28:42.069Z</updated>
+  <updated>2014-05-15T15:34:44.874Z</updated>
   <id>http://syxiaqj.github.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://syxiaqj.github.io/2014/05/15/something-about-xcode/"/>
     <id>http://syxiaqj.github.io/2014/05/15/something-about-xcode/</id>
     <published>2014-05-15T15:06:24.000Z</published>
-    <updated>2014-05-15T15:26:44.000Z</updated>
+    <updated>2014-05-15T15:34:36.000Z</updated>
     <content type="html"><![CDATA[<p>前两天公司新同事来入职，需要帮他把Mac电脑的开发环境搭建一下，对于iOS开发而言，开发工具Xcode必装无疑。</p>
 <p>无奈公司区区4M的网速，实在无力，再加上AppStore的间歇性神经病发作，让安装一个开发工具的简单诉求成为一件极其不容易的事情。</p>
 <p>当然，安装Xcode也只是第一步而已。模拟器，帮助文档，插件，这些都是必装项。</p>
@@ -35,7 +35,7 @@
 <h3 id="-xcode">安装Xcode</h3>
 <p>公司网速无力，新同事马上就来入职，想再AppStore上把Xcode下完，已经是不可能完成的任务了。当机立断，回家用我20M的网速下载安装包。</p>
 <p>我现在下载的Xcode版本是5.1.1，需要开发者账户才能进入下载列表。如图</p>
-<p>![Apple官方下载页][/image/something-about-xcode/XcodeDownload.png]</p>
+<p><img src="/image/something-about-xcode/XcodeDownload.png" alt="Apple官方下载页"></p>
 <p>下载完成，安装这事儿，水到渠成！</p>
 <p>另外说一句，即使我20M的网速，也很难下载的动着Xcode，但是用迅雷，开启迅雷离线下载，那下载速度，蹭蹭蹭蹭蹭蹭，一个劲的往上飙，2.4m/s的下载速度，那一个叫爽！</p>
 <p>这就是迅雷的工具，给我带来的服务。除了感觉到爽以外，最重要的是给我节省了时间，这是一件多么美好的事儿。</p>
