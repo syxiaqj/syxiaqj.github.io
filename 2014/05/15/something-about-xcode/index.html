@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>将我们的hexo站点部署到git | 浪花一朵朵</title>
+  <title>安装Xcode的那些事儿 | 浪花一朵朵</title>
   <meta name="author" content="员员">
   
   <meta name="description" content="浪花一朵朵，员员">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="将我们的hexo站点部署到git"/>
+  <meta property="og:title" content="安装Xcode的那些事儿"/>
   <meta property="og:site_name" content="浪花一朵朵"/>
 
   
@@ -58,76 +58,59 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-02-24T02:41:30.000Z"><a href="/2014/02/24/deploy-to-github/">2月 24 2014</a></time>
+        <time datetime="2014-05-15T15:06:24.000Z"><a href="/2014/05/15/something-about-xcode/">5月 15 2014</a></time>
       
       
   
-    <h1 class="title">将我们的hexo站点部署到git</h1>
+    <h1 class="title">安装Xcode的那些事儿</h1>
   
 
     </header>
     <div class="entry">
       
-        <p>直奔主题，让我们来完成hexo的最后一步，将我们的博客部署到git上。让我们的经历，分享给别人，并且让自己博客成为一个跟别人探讨问题，交流技术生活的平台。OK，Let&#39;s begin step by step.</p>
+        <p>前两天公司新同事来入职，需要帮他把Mac电脑的开发环境搭建一下，对于iOS开发而言，开发工具Xcode必装无疑。</p>
+<p>无奈公司区区4M的网速，实在无力，再加上AppStore的间歇性神经病发作，让安装一个开发工具的简单诉求成为一件极其不容易的事情。</p>
+<p>当然，安装Xcode也只是第一步而已。模拟器，帮助文档，插件，这些都是必装项。</p>
+<p>下面就记录一下，这次安装Xcode的那些事儿：</p>
+<ul>
+<li>安装Xcode</li>
+<li>安装模拟器</li>
+<li>安装帮助文档</li>
+<li>必装插件</li>
+</ul>
 <a id="more"></a>
 
-<h3 id="-github-"><strong>注册一个GitHub账户</strong></h3>
-<p>注册GitHub账号，不管有账号的没账号的，不解释。</p>
-<h3 id="-repository-"><strong>建立一个repository</strong></h3>
-<p>这一步，非常重要，也比较有讲究。repository的命名有两种方式，并且对应的也会有两种hexo的配置方法。</p>
-<p><strong>1、yourname.github.io：</strong></p>
-<p><strong>2、随意命名，如Blog：</strong></p>
-<p>建议使用第一种方式，两种命名方式均可，但是请注意后面的步骤，不同的命名方式需要不同的操作。</p>
-<h3 id="-github-pages-"><strong>新建GitHub Pages</strong></h3>
-<p>先来了解一下，什么是<a href="https://help.github.com/articles/what-are-github-pages" target="_blank">GitHub Pages</a>。GitHub Pages有User/Organization Pages 和 Project Pages之分，具体的说明，请看<a href="https://help.github.com/articles/user-organization-and-project-pages" target="_blank">说明</a>。</p>
-<p>下面图文说明，如何新建一个GitHub Pages</p>
-<p>第一步：</p>
-<p><img src="/image/deploy-to-github/git_setting.png" alt="点击setting"></p>
-<p>第二步：</p>
-<p><img src="/image/deploy-to-github/git_createGitPages.png" alt="新建GitHub Pages"></p>
-<p>如果的repository的命名是<code>yourname.github.io</code>这样的方式，你的GitHub Pages的域名就是<code>yourname.github.io</code>，这就是User/Organization Pages。<br>如果你的repository的命名是<code>projectname</code>，那么GitHub Pages的域名就是<code>username.github.io/projectname</code>，这就是所谓的Project Pages。</p>
-<p>没关系，both ok！</p>
-<h3 id="-hexo-"><strong>配置hexo</strong></h3>
-<p>编辑hexo目录下的<code>_config.yml</code>文件，配置一下几项：</p>
-<p>修改URL项</p>
-<pre><code># URL
-## If your site is put in a subdirectory, set url as &#39;http://yoursite.com/child&#39; and root as &#39;/child/&#39;
-url: http://syxiaqj.github.io    #GitHub Pages域名
-root: /                #Project Pages 填 /projectname
-permalink: :year/:month/:day/:title/
-tag_dir: tags
-archive_dir: archives
-category_dir: categories
-code_dir: downloads/code
-</code></pre><p>修改Deployment项</p>
-<pre><code># Deployment
-## Docs: http://zespia.tw/hexo/docs/deployment.html
-deploy:
-  type: github
-  repository: https://...        #你GitHub Pages的URl全路径
-  branch: master            #如果是Project Pages，这里填gh-pages
-</code></pre><p>重申一下，GitHub Pages分为User/Organization Pages 和 Project Pages，各位不要看错。</p>
-<h3 id="-"><strong>部署</strong></h3>
-<p>运行命令</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-</pre></td><td class="code"><pre>hexo <span class="keyword">generate</span>
-hexo deploy
-</pre></td></tr></table></figure>
-
-<p>上面的两行命令，等于下面一行命令</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>hexo g <span class="operator">-d</span>
-</pre></td></tr></table></figure>
-
-<p><code>g</code>是<code>generate</code>的简写，<code>d</code>是<code>deploy</code>的简写</p>
-<h3 id="-github-pages-"><strong>访问你的GitHub Pages</strong></h3>
-<p>在浏览器输入GitHub Pages的链接，如<code>yourname.github.io</code> or <code>yourname.github.io/projectname</code>，访问一下，我擦，怎么还是GitHub Pages的默认页。亲，不要着急，GitHub的部署会有最长10分钟的延迟，等会你再访问一下就好了。</p>
-<h3 id="-"><strong>后记</strong></h3>
-<p>OK，经过一番努力，用hexo这个框架搭建一个我们自己的博客终于搞定了。祝你在积累与分享的路上能够收获更多的东西！</p>
-<p><em>工作之余，花了一周多的时间终于将hexo这个系列的东西整理完成了。一件事情完成，总是令人高兴的，就像自己把hexo搭起来的时候；亦或是第一篇博文写完，发布的时候。写博客的无疑是一件花时间的事情，但是在自己整理的过程中会有新的认识与理解，这非常好。</em></p>
-<p><em>接下来有什么打算呢？最近正在学习一个开源框架Beeframework，会把我学习心得与成果整理出来。中间也会穿插一下Cocos2d-x的内容，游戏开发我也在学习</em></p>
-<p><strong><em>大家有什么问题，欢迎通过留言、微博等多种途径进行交流</em></strong></p>
+<h3 id="-xcode">安装Xcode</h3>
+<p>公司网速无力，新同事马上就来入职，想再AppStore上把Xcode下完，已经是不可能完成的任务了。当机立断，回家用我20M的网速下载安装包。</p>
+<p>我现在下载的Xcode版本是5.1.1，需要开发者账户才能进入下载列表。如图</p>
+<p>![Apple官方下载页][/image/something-about-xcode/XcodeDownload.png]</p>
+<p>下载完成，安装这事儿，水到渠成！</p>
+<p>另外说一句，即使我20M的网速，也很难下载的动着Xcode，但是用迅雷，开启迅雷离线下载，那下载速度，蹭蹭蹭蹭蹭蹭，一个劲的往上飙，2.4m/s的下载速度，那一个叫爽！</p>
+<p>这就是迅雷的工具，给我带来的服务。除了感觉到爽以外，最重要的是给我节省了时间，这是一件多么美好的事儿。</p>
+<p>在这里，我弱弱的呼吁一下：<strong><em>我们当支持正版，并且支持付费，让那些给我们提供服务的IT公司生存下去，并且给我们提供更好的服务！</em></strong></p>
+<h3 id="-">安装模拟器</h3>
+<p>接下来需要将模拟器安装一下，如果还是4M共享的网速，要把模拟器下载完成，是不是想死的心都有了。</p>
+<p>那我们就离线安装一下，把别的电脑中已经下载完成的模拟器文件拷贝过来就ok了。</p>
+<p>在这个目录下：</p>
+<pre><code>Library/Caches/com.apple.dt.Xcode/Downloads/
+</code></pre><p>将此目录下的内容，拷贝到需要安装模拟器的电脑上相同的目录下。重新启动Xcode，即可安装模拟器，一会会儿功夫搞定！相信我！</p>
+<h3 id="-">安装帮助文档</h3>
+<p>帮助文档的离线安装方法跟模拟器是一样一样的，就是从已经安装完的电脑上讲文件拷贝过来就ok了。总而言之，言而总之，最麻烦的是下载，而且这些文件都不小。</p>
+<p>文档目录：</p>
+<pre><code>/Applications/Xcode.app/Contents/Developer/Documentation/DocSets/
+</code></pre><p>Xcode的开发环境，基本搞定！</p>
+<h3 id="-">安装插件</h3>
+<p>如果你想提高你的开发效率，找到一些合适、好用的Xcode插件也是意见极为重要的事情，下面介绍一下，我自己现在在用的几款插件：</p>
+<ul>
+<li><a href="http://alcatraz.io/" target="_blank">Alcatraz</a>：Xcode插件管理工具，当然自己本身也是一款插件</li>
+<li><a href="https://github.com/onevcat/VVDocumenter-Xcode" target="_blank">VVDocumenter</a>：非常好用的代码注释插件</li>
+<li><a href="https://github.com/ksuther/KSImageNamed-Xcode" target="_blank">KSImageNamed-Xcode</a>：图片名称自动填充，以免无输入，我觉得，这是一款极为有用的插件，不仅提高效率，而且能减少失误</li>
+<li><a href="https://github.com/holtwick/HOStringSense-for-Xcode" target="_blank">HOStringSense-for-Xcode</a>：编写大段文本时，带有各种特殊符号时，作用非常明显</li>
+<li><a href="https://github.com/Galeas/CocoaPodUI" target="_blank">CocoaPodUI</a>：实现了CocoaPods的GUI，按理说是一款非常好的插件，可惜我自己的使用效果来看，体验并不很好</li>
+</ul>
+<p>还有其他很多Xcode插件的，我经常使用的就是上面这些。有人说“插件就是生产力”，我觉得说的是非常准确的。</p>
+<p>每个人都会用自己擅长的方式去处理问题，作为工程师，当从技术的角度去解决问题，即使需要解决的是技术问题。</p>
+<p><strong><em>大家有问题，欢迎通过留言、微博等多种途径进行交流</em></strong></p>
 
       
     </div>
@@ -136,13 +119,13 @@ hexo deploy
         
   
   <div class="categories">
-    <a href="/categories/hexo/">hexo</a>
+    <a href="/categories/iOS/">iOS</a>
   </div>
 
         
   
   <div class="tags">
-    <a href="/tags/hexo/">hexo</a>, <a href="/tags/Mac/">Mac</a>
+    <a href="/tags/iOS/">iOS</a>, <a href="/tags/Xcode/">Xcode</a>
   </div>
 
         
