@@ -4,7 +4,7 @@
   <subtitle><![CDATA[技术是海，深不见底；生活是洋，广不着边；而我如浪花，清澈透明并且舞动双手，仰望天空。]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://syxiaqj.github.io/"/>
-  <updated>2014-05-15T15:49:21.329Z</updated>
+  <updated>2014-05-16T15:26:38.277Z</updated>
   <id>http://syxiaqj.github.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://syxiaqj.github.io/2014/05/15/something-about-xcode/"/>
     <id>http://syxiaqj.github.io/2014/05/15/something-about-xcode/</id>
     <published>2014-05-15T15:06:24.000Z</published>
-    <updated>2014-05-15T15:47:09.000Z</updated>
+    <updated>2014-05-16T15:25:58.000Z</updated>
     <content type="html"><![CDATA[<p>前两天公司新同事来入职，需要帮他把Mac电脑的开发环境搭建一下，对于iOS开发而言，开发工具Xcode必装无疑。</p>
 <p>无奈公司区区4M的网速，实在无力，再加上AppStore的间歇性神经病发作，让安装一个开发工具的简单诉求成为一件极其不容易的事情。</p>
 <p>当然，安装Xcode也只是第一步而已。模拟器，帮助文档，插件，这些都是必装项。</p>
@@ -60,7 +60,9 @@
 <li><a href="https://github.com/holtwick/HOStringSense-for-Xcode" target="_blank">HOStringSense-for-Xcode</a>：编写大段文本时，带有各种特殊符号时，作用非常明显</li>
 <li><a href="https://github.com/Galeas/CocoaPodUI" target="_blank">CocoaPodUI</a>：实现了CocoaPods的GUI，按理说是一款非常好的插件，可惜我自己的使用效果来看，体验并不很好</li>
 </ul>
-<p>还有其他很多Xcode插件的，我经常使用的就是上面这些。有人说“插件就是生产力”，我觉得说的是非常准确的。</p>
+<p>插件的安装目录在这里：</p>
+<pre><code>Library/Application\ Support/Developer/Shared/Xcode/Plug-ins/
+</code></pre><p>还有其他很多Xcode插件的，我经常使用的就是上面这些。有人说“插件就是生产力”，我觉得说的是非常准确的。</p>
 <p>每个人都会用自己擅长的方式去处理问题，作为工程师，当从技术的角度去解决问题，即使需要解决的是技术问题。</p>
 <p><strong><em>大家有问题，欢迎通过留言、微博等多种途径进行交流</em></strong></p>
 ]]></content>
