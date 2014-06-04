@@ -4,7 +4,7 @@
   <subtitle><![CDATA[技术是海，深不见底；生活是洋，广不着边；而我如浪花，清澈透明并且舞动双手，仰望天空。]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://syxiaqj.github.io/"/>
-  <updated>2014-05-22T15:21:39.216Z</updated>
+  <updated>2014-06-04T15:43:54.125Z</updated>
   <id>http://syxiaqj.github.io/</id>
   
   <author>
@@ -13,6 +13,81 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[尝鲜OS X Yosemite]]></title>
+    <link href="http://syxiaqj.github.io/2014/06/04/user-yosemite-developer-preview/"/>
+    <id>http://syxiaqj.github.io/2014/06/04/user-yosemite-developer-preview/</id>
+    <published>2014-06-04T13:14:48.000Z</published>
+    <updated>2014-06-04T15:40:18.000Z</updated>
+    <content type="html"><![CDATA[<p>WWDC（Worldwide Developers Conference)落幕，正如会议的主题一样，Write the code，Change the word，此次开发者大会给大家带来了很多新鲜、好玩、具有革命性的东西，操作系统（OS X 10.10、iOS 8）、开发工具（Xcode 6）、包括新的开发语言（Swift），这些就不在赘述了，网上已有很多相关资料，这里附上WWDC2014官网地址：<a href="https://developer.apple.com/wwdc/" target="_blank">传送门</a>。</p>
+<p>身为一名iOS开发者，已经迫不及待的想试试这些新功能与特性了，所有的一切从Mac操作系统（OS X Yosemite）开始。在这里介绍操作系统的安装过程，并我从非专业的角度，聊一聊对操作系统的使用体验。</p>
+<p>下面记录我尝鲜OS X Yosemite的全过程。</p>
+<ul>
+<li>备份OS X Wavericks</li>
+<li>安装OS X Yosemite</li>
+<li>使用体验</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="-os-x-wavericks">备份OS X Wavericks</h3>
+<p>每次系统升级，都要及时备份，这是习惯。</p>
+<p>即使不是系统升级，也要记得经常备份，以防不测。常言道“常在河边走，哪有不湿鞋”，不要抱着侥幸心理做危险的事情，有一天真当数据找不回来了，那就真的呵呵加拜拜了。总之，不作死就不会死，常常备份不会错！</p>
+<p>系统备份，Mac下的Time Machine简单实用，但是比较花时间，共计花时约3小时。</p>
+<p>备份系统，漫漫兮一时半会儿好不了。顺便下载OS X Yosemite Developer Preview。</p>
+<p>此时，可以那本书看看，奋斗的人们我们要抓紧每一分钟学习；可以拿起手机刷刷微博，新时代的骚年要紧跟时代的节奏；也可以跟女朋友聊聊天，给她讲讲如何Write the code，Change the world。好吧，其实爱干什么，是你的事儿，我只是捧着《Mac Talk》，读了一会儿。</p>
+<h3 id="-os-x-yosemite">安装OS X Yosemite</h3>
+<p>现在官方出的操作系统名称叫“Yosemite Developer Preview”。官方只能通过开发者账号下载。如果你没有开发者账号，也没什么问题，现在网上应该有很多资源了，google一下去吧。</p>
+<p>安装包下载完毕，一键安装，耐心等待，该干嘛干嘛去！</p>
+<p>重现一下安装Yosemite过程：</p>
+<p><img src="/image/user-yosemite-developer-preview/ReadyForInstall1.png" alt="准备安装"></p>
+<p><img src="/image/user-yosemite-developer-preview/ReadyForInstall2.png" alt="正在准备安装"></p>
+<p><img src="/image/user-yosemite-developer-preview/Installing.png" alt="正在安装"></p>
+<p><img src="/image/user-yosemite-developer-preview/Installed.png" alt="安装完成"></p>
+<h3 id="-">使用体验</h3>
+<p>OK，系统安装完毕，迫不及待来体验一下“优胜美地”。先整体感受一下：</p>
+<p><img src="/image/user-yosemite-developer-preview/Folder.png" alt="Folder"></p>
+<p><img src="/image/user-yosemite-developer-preview/NotificationBar.png" alt="通知栏"></p>
+<p><img src="/image/user-yosemite-developer-preview/SystemPreferences.png" alt="系统偏好设置"></p>
+<p><img src="/image/user-yosemite-developer-preview/Dock.png" alt="Dock栏"></p>
+<p><img src="/image/user-yosemite-developer-preview/UserAndGroup.png" alt="用户与组"></p>
+<p><img src="/image/user-yosemite-developer-preview/iCloudInFolder.png" alt="Folder中的iCloud"></p>
+<p><img src="/image/user-yosemite-developer-preview/Launchpad.png" alt="Launchpad"></p>
+<p><img src="/image/user-yosemite-developer-preview/MissionControl.png" alt="MissionControl"></p>
+<p>OK，图片展现到此为止。接下来，吐槽一下“Yosemite Developer Preview”：</p>
+<ol>
+<li><p>UI上，总体感受是丑的，并且问题多多。Folder边框极不协调，Folder颜色也不好看，图标也尚未全部扁平化（比如iTunes），有些地方的布局出现错乱（详见用户与组图片，通知栏设置后出现显示混乱）。</p>
+</li>
+<li><p>系统安装完，经我不完全测试，不少软件使用上有问题，例如VM虚拟机无法使用，Mou的编辑也有问题，Foxmail无法使用。</p>
+</li>
+<li><p>应用程序在Application文件夹中删除后，在Launchpad中没有及时同步，系统重启才有效。</p>
+</li>
+<li><p>重启过3、4三次，其中一次登录时，死机！强制关机，重启后，正常使用！</p>
+</li>
+<li><p>Yosemite在交互上做了一些非常棒的改进。比如Dock中，如果应用程序正在使用，图标下面多了一个小小的灰色的原点，提示用户哪些用户正在使用（强迫症患者又有的忙了）；通知栏继承了社交功能，其中有新浪微博，以后发文字微博会变得非常方便；</p>
+</li>
+</ol>
+<p>我看见网上有不少人说，安装完Yosemite Developer Preview后，看见扁平化很爽，我想说，好像没那么好看，至少这个版本看起来既不好看。虽然，“Yosemite Developer Preview”问题诸多，但是我相信精益救精的Apple公司，到等到“Yosemite”正式发布时，应该会很不一样！</p>
+<p>尝鲜Yosemite，先到这儿吧。作为一名iOS开发者，其实我对Xcode6，iOS8，Swift更感兴趣。接下来，我要去探索这些了。</p>
+<p><em><strong>欢迎大家通过评论、微博等方式进行沟通交流</strong></em></p>
+]]></content>
+    <summary type="html"><![CDATA[<p>WWDC（Worldwide Developers Conference)落幕，正如会议的主题一样，Write the code，Change the word，此次开发者大会给大家带来了很多新鲜、好玩、具有革命性的东西，操作系统（OS X 10.10、iOS 8）、开发工具（Xcode 6）、包括新的开发语言（Swift），这些就不在赘述了，网上已有很多相关资料，这里附上WWDC2014官网地址：<a href="https://developer.apple.com/wwdc/" target="_blank">传送门</a>。</p>
+<p>身为一名iOS开发者，已经迫不及待的想试试这些新功能与特性了，所有的一切从Mac操作系统（OS X Yosemite）开始。在这里介绍操作系统的安装过程，并我从非专业的角度，聊一聊对操作系统的使用体验。</p>
+<p>下面记录我尝鲜OS X Yosemite的全过程。</p>
+<ul>
+<li>备份OS X Wavericks</li>
+<li>安装OS X Yosemite</li>
+<li>使用体验</li>
+</ul>
+]]></summary>
+    
+      <category term="Mac" scheme="http://syxiaqj.github.io/tags/Mac/"/>
+    
+      <category term="OS X" scheme="http://syxiaqj.github.io/tags/OS%20X/"/>
+    
+      <category term="Mac" scheme="http://syxiaqj.github.io/categories/Mac/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[安装Xcode的那些事儿]]></title>
