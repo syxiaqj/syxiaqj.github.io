@@ -4,7 +4,7 @@
   <subtitle><![CDATA[技术是海，深不见底；生活是洋，广不着边；而我如浪花，清澈透明并且舞动双手，仰望天空。]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://syxiaqj.github.io/"/>
-  <updated>2014-06-09T15:15:05.324Z</updated>
+  <updated>2014-06-26T12:18:37.514Z</updated>
   <id>http://syxiaqj.github.io/</id>
   
   <author>
@@ -13,6 +13,62 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[免费内侧平台FIR]]></title>
+    <link href="http://syxiaqj.github.io/2014/06/26/fir/"/>
+    <id>http://syxiaqj.github.io/2014/06/26/fir/</id>
+    <published>2014-06-26T12:06:41.000Z</published>
+    <updated>2014-06-26T12:18:11.000Z</updated>
+    <content type="html"><![CDATA[<p>大家或许听说过<a href="https://www.testflightapp.com/" target="_blank">TestFlight</a>，今天要介绍一个国内的免费APP托管平台 - <a href="http://fir.im/" target="_blank">Fly It Remotely</a>。FIR号称两步简单的操作发布应用，供用户内侧使用，现在只支持iOS平台。</p>
+<p>FIR，6月14日上线以来，我看见了包括QQ、聚美、快的、人人等众多知名企业也在使用。我也将公司的APP的内侧放在FIR上，体验良好。中间也遇到了一些问题，下面，我将自己的使用经历分享给各位，细说其中的方便与不方便。</p>
+<ul>
+<li>添加UDID</li>
+<li>打包</li>
+<li>发布</li>
+<li>下载</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="-udid">添加UDID</h3>
+<p>在项目证书中添加iOS设备的UDID，iOS开发工程师都知道。</p>
+<p>对于工程师而言，找设备的UDID是轻而易举的事儿，但是对于一般用户可不是件容易的事儿。FIR提供了一种非常方便的方式，让用户找到自己设备的UDID。操作如下：</p>
+<p>在iPhone中打开Safari，地址栏输入如下地址<code>http://fir.im/main#!/udid</code>，按照提示安装一下FIR的一个证书，便可马上知晓自己iPhone的UDID，极为方便。</p>
+<p><img src="/image/fir/firimUdid.png" alt="获取UDID"></p>
+<h3 id="-">打包</h3>
+<p>在上传到FIR之前，首先需要吧APP打包成ipa包，打包流程如下：</p>
+<p><img src="/image/fir/ipaStep1.png" alt="第一步"></p>
+<p><strong>注意：打包时，设备不可选模拟器，且不可插着iOS设备。前者会导致Archive不可选，后者会导致APP在其他型号的手机上，可下载，却无法安装</strong></p>
+<p><img src="/image/fir/ipaStep2.png" alt="第二步"></p>
+<p><img src="/image/fir/ipaStep3.png" alt="第三步"></p>
+<p><img src="/image/fir/ipaStep4.png" alt="第四步"></p>
+<p>APP成功打包成ipa包。</p>
+<h3 id="-">发布</h3>
+<p>这个步骤也极为简单，在FIR注册一个账号，<a href="http://fir.im/main#!/publish" target="_blank">上传</a>ipa包。</p>
+<p><img src="/image/fir/firimPublic.png" alt="上传ipa包"></p>
+<p><strong>注意：记得选择“在广场中显示”状态为on，或者“允许所有人下载”的状态为on，否则测试用户在不登录FIR状态下访问APP的连接地址，会出现403错误</strong></p>
+<h3 id="-">下载</h3>
+<p>有两种方式：扫一扫、iPhone直接访问</p>
+<p>扫一扫：电脑的浏览器中访问APP(fir.im/xxxx)，然后用手机的任何一款可扫描应用扫一扫二维码，轻轻松松安装完成。</p>
+<p>iPhone直接访问：在iPhone中打开Safari，输入连接地址(fir.im/xxxx)，直接下载即可。</p>
+]]></content>
+    <summary type="html"><![CDATA[<p>大家或许听说过<a href="https://www.testflightapp.com/" target="_blank">TestFlight</a>，今天要介绍一个国内的免费APP托管平台 - <a href="http://fir.im/" target="_blank">Fly It Remotely</a>。FIR号称两步简单的操作发布应用，供用户内侧使用，现在只支持iOS平台。</p>
+<p>FIR，6月14日上线以来，我看见了包括QQ、聚美、快的、人人等众多知名企业也在使用。我也将公司的APP的内侧放在FIR上，体验良好。中间也遇到了一些问题，下面，我将自己的使用经历分享给各位，细说其中的方便与不方便。</p>
+<ul>
+<li>添加UDID</li>
+<li>打包</li>
+<li>发布</li>
+<li>下载</li>
+</ul>
+]]></summary>
+    
+      <category term="iOS" scheme="http://syxiaqj.github.io/tags/iOS/"/>
+    
+      <category term="测试" scheme="http://syxiaqj.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+      <category term="iOS" scheme="http://syxiaqj.github.io/categories/iOS/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[朱家尖之行]]></title>

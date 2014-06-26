@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>安装Xcode的那些事儿 | 浪花一朵朵</title>
+  <title>免费内侧平台FIR | 浪花一朵朵</title>
   <meta name="author" content="员员">
   
   <meta name="description" content="浪花一朵朵，员员">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="安装Xcode的那些事儿"/>
+  <meta property="og:title" content="免费内侧平台FIR"/>
   <meta property="og:site_name" content="浪花一朵朵"/>
 
   
@@ -58,62 +58,47 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-05-15T15:06:24.000Z"><a href="/2014/05/15/something-about-xcode/">5月 15 2014</a></time>
+        <time datetime="2014-06-26T12:06:41.000Z"><a href="/2014/06/26/fir/">6月 26 2014</a></time>
       
       
   
-    <h1 class="title">安装Xcode的那些事儿</h1>
+    <h1 class="title">免费内侧平台FIR</h1>
   
 
     </header>
     <div class="entry">
       
-        <p>前两天公司新同事来入职，需要帮他把Mac电脑的开发环境搭建一下，对于iOS开发而言，开发工具Xcode必装无疑。</p>
-<p>无奈公司区区4M的网速，实在无力，再加上AppStore的间歇性神经病发作，让安装一个开发工具的简单诉求成为一件极其不容易的事情。</p>
-<p>当然，安装Xcode也只是第一步而已。模拟器，帮助文档，插件，这些都是必装项。</p>
-<p>下面就记录一下，这次安装Xcode的那些事儿：</p>
+        <p>大家或许听说过<a href="https://www.testflightapp.com/" target="_blank">TestFlight</a>，今天要介绍一个国内的免费APP托管平台 - <a href="http://fir.im/" target="_blank">Fly It Remotely</a>。FIR号称两步简单的操作发布应用，供用户内侧使用，现在只支持iOS平台。</p>
+<p>FIR，6月14日上线以来，我看见了包括QQ、聚美、快的、人人等众多知名企业也在使用。我也将公司的APP的内侧放在FIR上，体验良好。中间也遇到了一些问题，下面，我将自己的使用经历分享给各位，细说其中的方便与不方便。</p>
 <ul>
-<li>安装Xcode</li>
-<li>安装模拟器</li>
-<li>安装帮助文档</li>
-<li>必装插件</li>
+<li>添加UDID</li>
+<li>打包</li>
+<li>发布</li>
+<li>下载</li>
 </ul>
 <a id="more"></a>
 
-<h3 id="-1-xcode-"><strong>1.安装Xcode</strong></h3>
-<p>公司网速无力，新同事马上就来入职，想再AppStore上把Xcode下完，已经是不可能完成的任务了。当机立断，回家用我20M的网速下载安装包。</p>
-<p>我现在下载的Xcode版本是5.1.1，需要开发者账户才能进入下载列表。如图</p>
-<p><img src="/image/something-about-xcode/XcodeDownload.png" alt="Apple官方下载页"></p>
-<p>下载完成，安装这事儿，水到渠成！</p>
-<p>另外说一句，即使我20M的网速，也很难下载的动着Xcode，但是用迅雷，开启迅雷离线下载，那下载速度，蹭蹭蹭蹭蹭蹭，一个劲的往上飙，2.4m/s的下载速度，那一个叫爽！</p>
-<p>这就是迅雷的工具，给我带来的服务。除了感觉到爽以外，最重要的是给我节省了时间，这是一件多么美好的事儿。</p>
-<p>在这里，我弱弱的呼吁一下：<strong><em>我们当支持正版，并且支持付费，让那些给我们提供服务的IT公司生存下去，并且给我们提供更好的服务！</em></strong></p>
-<h3 id="-2-"><strong>2.安装模拟器</strong></h3>
-<p>接下来需要将模拟器安装一下，如果还是4M共享的网速，要把模拟器下载完成，是不是想死的心都有了。</p>
-<p>那我们就离线安装一下，把别的电脑中已经下载完成的模拟器文件拷贝过来就ok了。</p>
-<p>在这个目录下：</p>
-<pre><code>Library/Caches/com.apple.dt.Xcode/Downloads/
-</code></pre><p>将此目录下的内容，拷贝到需要安装模拟器的电脑上相同的目录下。重新启动Xcode，即可安装模拟器，一会会儿功夫搞定！相信我！</p>
-<h3 id="-3-"><strong>3.安装帮助文档</strong></h3>
-<p>帮助文档的离线安装方法跟模拟器是一样一样的，就是从已经安装完的电脑上讲文件拷贝过来就ok了。总而言之，言而总之，最麻烦的是下载，而且这些文件都不小。</p>
-<p>文档目录：</p>
-<pre><code>/Applications/Xcode.app/Contents/Developer/Documentation/DocSets/
-</code></pre><p>Xcode的开发环境，基本搞定！</p>
-<h3 id="-4-"><strong>4.安装插件</strong></h3>
-<p>如果你想提高你的开发效率，找到一些合适、好用的Xcode插件也是意见极为重要的事情，下面介绍一下，我自己现在在用的几款插件：</p>
-<ul>
-<li><a href="http://alcatraz.io/" target="_blank">Alcatraz</a>：Xcode插件管理工具，当然自己本身也是一款插件</li>
-<li><a href="https://github.com/onevcat/VVDocumenter-Xcode" target="_blank">VVDocumenter</a>：非常好用的代码注释插件</li>
-<li><a href="https://github.com/ksuther/KSImageNamed-Xcode" target="_blank">KSImageNamed-Xcode</a>：图片名称自动填充，以免无输入，我觉得，这是一款极为有用的插件，不仅提高效率，而且能减少失误</li>
-<li><a href="https://github.com/holtwick/HOStringSense-for-Xcode" target="_blank">HOStringSense-for-Xcode</a>：编写大段文本时，带有各种特殊符号时，作用非常明显</li>
-<li><a href="https://github.com/Galeas/CocoaPodUI" target="_blank">CocoaPodUI</a>：实现了CocoaPods的GUI，按理说是一款非常好的插件，可惜我自己的使用效果来看，体验并不很好</li>
-<li><a href="https://github.com/tangqiaoboy/xcode_tool" target="_blank">xcode_tool</a>：Xcode中一个代码片段库</li>
-</ul>
-<p>插件的安装目录在这里：</p>
-<pre><code>Library/Application\ Support/Developer/Shared/Xcode/Plug-ins/
-</code></pre><p>还有其他很多Xcode插件的，我经常使用的就是上面这些。有人说“插件就是生产力”，我觉得说的是非常准确的。</p>
-<p>每个人都会用自己擅长的方式去处理问题，作为工程师，当从技术的角度去解决问题，即使需要解决的是技术问题。</p>
-<p><strong><em>大家有问题，欢迎通过留言、微博等多种途径进行交流</em></strong></p>
+<h3 id="-udid">添加UDID</h3>
+<p>在项目证书中添加iOS设备的UDID，iOS开发工程师都知道。</p>
+<p>对于工程师而言，找设备的UDID是轻而易举的事儿，但是对于一般用户可不是件容易的事儿。FIR提供了一种非常方便的方式，让用户找到自己设备的UDID。操作如下：</p>
+<p>在iPhone中打开Safari，地址栏输入如下地址<code>http://fir.im/main#!/udid</code>，按照提示安装一下FIR的一个证书，便可马上知晓自己iPhone的UDID，极为方便。</p>
+<p><img src="/image/fir/firimUdid.png" alt="获取UDID"></p>
+<h3 id="-">打包</h3>
+<p>在上传到FIR之前，首先需要吧APP打包成ipa包，打包流程如下：</p>
+<p><img src="/image/fir/ipaStep1.png" alt="第一步"></p>
+<p><strong>注意：打包时，设备不可选模拟器，且不可插着iOS设备。前者会导致Archive不可选，后者会导致APP在其他型号的手机上，可下载，却无法安装</strong></p>
+<p><img src="/image/fir/ipaStep2.png" alt="第二步"></p>
+<p><img src="/image/fir/ipaStep3.png" alt="第三步"></p>
+<p><img src="/image/fir/ipaStep4.png" alt="第四步"></p>
+<p>APP成功打包成ipa包。</p>
+<h3 id="-">发布</h3>
+<p>这个步骤也极为简单，在FIR注册一个账号，<a href="http://fir.im/main#!/publish" target="_blank">上传</a>ipa包。</p>
+<p><img src="/image/fir/firimPublic.png" alt="上传ipa包"></p>
+<p><strong>注意：记得选择“在广场中显示”状态为on，或者“允许所有人下载”的状态为on，否则测试用户在不登录FIR状态下访问APP的连接地址，会出现403错误</strong></p>
+<h3 id="-">下载</h3>
+<p>有两种方式：扫一扫、iPhone直接访问</p>
+<p>扫一扫：电脑的浏览器中访问APP(fir.im/xxxx)，然后用手机的任何一款可扫描应用扫一扫二维码，轻轻松松安装完成。</p>
+<p>iPhone直接访问：在iPhone中打开Safari，输入连接地址(fir.im/xxxx)，直接下载即可。</p>
 
       
     </div>
@@ -128,7 +113,7 @@
         
   
   <div class="tags">
-    <a href="/tags/iOS/">iOS</a>, <a href="/tags/Xcode/">Xcode</a>
+    <a href="/tags/iOS/">iOS</a>, <a href="/tags/测试/">测试</a>
   </div>
 
         
