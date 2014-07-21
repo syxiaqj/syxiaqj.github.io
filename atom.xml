@@ -4,7 +4,7 @@
   <subtitle><![CDATA[技术是海，深不见底；生活是洋，广不着边；而我如浪花，清澈透明并且舞动双手，仰望天空。]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://syxiaqj.github.io/"/>
-  <updated>2014-06-26T12:21:07.008Z</updated>
+  <updated>2014-07-21T12:09:48.255Z</updated>
   <id>http://syxiaqj.github.io/</id>
   
   <author>
@@ -13,6 +13,395 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[问题虽小，你可知晓？]]></title>
+    <link href="http://syxiaqj.github.io/2014/07/21/small-questions-in-ios/"/>
+    <id>http://syxiaqj.github.io/2014/07/21/small-questions-in-ios/</id>
+    <published>2014-07-21T11:41:40.000Z</published>
+    <updated>2014-07-21T12:06:35.000Z</updated>
+    <content type="html"><![CDATA[<p>在iOS开发过程中，你是不是经常遇到这样的问题：有些UI效果，明明可以通过属性配置可以实现，却因为不知道而大费周章；某个功能明明实现过，但因为忘记了如何实现而重来一遍。</p>
+<p>然而，这些问题往往都是些小问题，明明不应该花费那么多时间，但是我经常被这折腾的够呛。所以，我决定记录一下。以备下次再用。</p>
+<ul>
+<li>UIBar</li>
+<li>UINavigationBar</li>
+<li>UITabBar</li>
+<li>UITableview</li>
+<li>文本</li>
+<li>键盘</li>
+</ul>
+<a id="more"></a>
+
+<p>还记得当初iOS7刚出来的那会儿，对于扁平化与拟物化之间争议的血雨腥风。然而现在大家都已经习惯了扁平化的设计，看到拟物设计时，倒是要吐槽一下了。</p>
+<p>对于工程师而言，来不及感叹世事变化太快，这些都是设计师们的事儿，我们还是老老实实做好iOS6、iOS7的适配工作吧。现在扁平化大行其道，我们需要跟iOS6系统本身自带的很多效果say goodbye。</p>
+<h3 id="-uibar-"><strong>UIBar</strong></h3>
+<p>UINavigationBar，UITabBar，UIToolBar都是UIBar，下面我们看看iOS6与iOS7之间的差别。</p>
+<p><img src="/image/small-questions-in-ios/iOSUIBar.png" alt="iOSUIBar"></p>
+<p>很多时候，iOS6自带的那种拟物的立体的效果，会让整个页面非常不协调，我想每位iOS开发工程师都懂的。所以，我们需要把它“拍扁”。</p>
+<p>拍扁有两种方式，一种设置背景色，一种设置背景图片。</p>
+<p>1.设置背景色：</p>
+<p>首先定义一个UIColor的宏</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>#define ColorWithHexValue(hexValue) [UIColor colorWithRed:((<span class="keyword">float</span>)((hexValue & <span class="number">0xFF0000</span>) &gt;&gt; <span class="number">16</span>))/<span class="number">255.0</span> green:((<span class="keyword">float</span>)((hexValue & <span class="number">0xFF00</span>) &gt;&gt; <span class="number">8</span>))/<span class="number">255.0</span> blue:((<span class="keyword">float</span>)(hexValue & <span class="number">0xFF</span>))/<span class="number">255.0</span> alpha:<span class="number">1.0</span>]
+</pre></td></tr></table></figure>
+
+<p>然后设置UIBar的背景色，需要区分系统版本</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="code"><pre>if (NSFoundationVersionNumber &gt; NSFoundationVersionNumber_iOS_6_1)
+{
+	<span class="attr_selector">[[UINavigationBar appearance]</span> setBarTintColor<span class="value">:ColorWithHexValue(<span class="number">0</span>x289BBE)];</span>
+	<span class="attr_selector">[[UITabBar appearance]</span> setBarTintColor<span class="value">:ColorWithHexValue(<span class="number">0</span>x289BBE)];</span>
+}
+else
+{
+	<span class="attr_selector">[[UINavigationBar appearance]</span> setTintColor<span class="value">:ColorWithHexValue(<span class="number">0</span>x289BBE)];</span>
+	<span class="attr_selector">[[UITabBar appearance]</span> setTintColor<span class="value">:ColorWithHexValue(<span class="number">0</span>x289BBE)];</span>
+}
+</pre></td></tr></table></figure>
+
+<p>iOS6拍扁后的效果图：</p>
+<p><img src="/image/small-questions-in-ios/iOS6BgColorUINavigationBar.png" alt="UINavigationBar">
+<img src="/image/small-questions-in-ios/iOS6BgColorUITabBar.png" alt="UITabBar"></p>
+<p>2.设置背景图片：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="code"><pre><span class="comment">//--- 创建一张图片 ---</span>
+<span class="comment">//--- 此方法可以添加到UIImage的Category方法中 ---</span>
+<span class="built_in">CGRect</span> rect = CGRectMake(<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>);
+UIGraphicsBeginImageContext(rect<span class="variable">.size</span>);
+CGContextRef context = UIGraphicsGetCurrentContext();
+    
+CGContextSetFillColorWithColor(context, [<span class="built_in">UIColor</span> yellowColor]<span class="variable">.CGColor</span>);
+CGContextFillRect(context, rect);
+    
+<span class="built_in">UIImage</span> *image = UIGraphicsGetImageFromCurrentImageContext();
+UIGraphicsEndImageContext();
+
+<span class="comment">//--- 拍扁 拍扁 ---</span>
+[[<span class="built_in">UINavigationBar</span> appearance] setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+
+[[UITabBar appearance] setBackgroundImage:image];
+</pre></td></tr></table></figure>
+
+<p>iOS6拍扁后的效果图</p>
+<p><img src="/image/small-questions-in-ios/iOS6BgImgUINavigationBar.png" alt="UINavigationBar">
+<img src="/image/small-questions-in-ios/iOS6BgImgUITabBar.png" alt="UITabBar"></p>
+<p>我们看一下，iOS6中拍扁之后的效果，客观您按需索取吧。总的来说，后面的方法更加扁平。在iOS7中的效果是一样的，您随意选择。</p>
+<p>3.在iOS7下所有的UIBar还有毛玻璃效果，属性为<code>translucent</code></p>
+<p>NavigationBar禁用毛玻璃效果：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>self<span class="preprocessor">.navigationController</span><span class="preprocessor">.navigationBar</span><span class="preprocessor">.translucent</span> = NO<span class="comment">;</span>
+</pre></td></tr></table></figure>
+
+<p>TabBar禁用毛玻璃效果：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>self<span class="preprocessor">.tabBarController</span><span class="preprocessor">.tabBar</span><span class="preprocessor">.translucent</span> = NO<span class="comment">;</span>
+</pre></td></tr></table></figure>
+
+<h3 id="-uinavigationbar-"><strong>UINavigationBar</strong></h3>
+<p>我们来看iOS6与iOS7之间，导航栏的区别，如图：</p>
+<p><img src="/image/small-questions-in-ios/iOS6NavigationBar.png" alt="NavigationBariOS6"> </p>
+<p><img src="/image/small-questions-in-ios/iOS7NavigationBar.png" alt="NavigationBariOS7"></p>
+<p>1.首先，我们来解决Back按钮的问题</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre></td><td class="code"><pre><span class="comment">//--- 统一设置UIBarButtonItem的文字属性，包括返回按钮 ---</span>
+<span class="built_in">NSDictionary</span> *titleAttributes = @{UITextAttributeFont: [<span class="built_in">UIFont</span> systemFontOfSize:<span class="number">16</span>],
+                                  UITextAttributeTextColor: [<span class="built_in">UIColor</span> whiteColor]
+                                      };
+[[<span class="built_in">UIBarButtonItem</span> appearance] setTitleTextAttributes:titleAttributes
+                                            forState:UIControlStateNormal];
+
+<span class="comment">//设置图片拉升的区域，根据需要自己设置</span>
+<span class="built_in">UIEdgeInsets</span> edgeInsets = UIEdgeInsetsMake(<span class="number">0</span>, <span class="number">18</span>, <span class="number">0</span>, <span class="number">0</span>);    
+<span class="built_in">UIImage</span> *backImage = [[<span class="built_in">UIImage</span> imageNamed:@<span class="string">"back"</span>] resizableImageWithCapInsets:edgeInsets];
+        
+[[<span class="built_in">UIBarButtonItem</span> appearance] setBackButtonBackgroundImage:backImage
+                                                  forState:UIControlStateNormal
+                                                barMetrics:UIBarMetricsDefault];
+
+<span class="comment">//----- 按照系统版本 设置返回按钮 -----</span>
+<span class="keyword">if</span> (NSFoundationVersionNumber &gt; NSFoundationVersionNumber_iOS_6_1)
+{
+	<span class="comment">//设置返回按钮文字的位置，根据需要自己设置</span>
+	[[<span class="built_in">UIBarButtonItem</span> appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(-<span class="number">5</span>, <span class="number">0</span>) forBarMetrics:UIBarMetricsDefault];
+}
+<span class="keyword">else</span>
+{
+	<span class="comment">//设置返回按钮文字的位置，根据需要自己设置</span>
+	[[<span class="built_in">UIBarButtonItem</span> appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(<span class="number">3</span>, <span class="number">1</span>)
+                                                         forBarMetrics:UIBarMetricsDefault];
+}
+</pre></td></tr></table></figure>
+
+<p><em>测试结果，在模拟环境下iOS7中有点问题，第一次push的时候，back按钮箭头不可见，在真机上没问题。</em></p>
+<p>在iOS7环境下，还有另外一个方法能设置返回按钮</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="built_in">UIImage</span> *backImage = [<span class="built_in">UIImage</span> imageNamed:@<span class="string">"back"</span>];
+
+[[<span class="built_in">UINavigationBar</span> appearance] setBackIndicatorImage:backImage];
+[[<span class="built_in">UINavigationBar</span> appearance] setBackIndicatorTransitionMaskImage:backImage];
+</pre></td></tr></table></figure>
+
+<p>2.然后，我们来解决NavigationBar的title</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="built_in">NSDictionary</span> *navTitleAttributes = @{NSForegroundColorAttributeName: [<span class="built_in">UIColor</span> whiteColor],
+                                     NSFontAttributeName: [<span class="built_in">UIFont</span> boldSystemFontOfSize:<span class="number">18</span>]};
+    
+[[<span class="built_in">UINavigationBar</span> appearance] setTitleTextAttributes:navTitleAttributes];
+</pre></td></tr></table></figure>
+
+<p>3.最后，来设置一下状态栏</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="attr_selector">[[UINavigationBar appearance]</span> <span class="tag">setBarStyle</span><span class="pseudo">:UIBarStyleBlack</span>];
+</pre></td></tr></table></figure>
+
+<p>OK，看一下，设置完后的效果：</p>
+<p><img src="/image/small-questions-in-ios/iOS6NavigationBarUpdated.png" alt="iOS6导航栏"></p>
+<p><img src="/image/small-questions-in-ios/iOS7NavigationBarUpdated.png" alt="iOS7导航栏"></p>
+<h3 id="-uitabbar-"><strong>UITabBar</strong></h3>
+<p>针对UITabBar，它的拍扁问题，在前面已经解决了，下面我们再看几个问题。</p>
+<p>1.设置图标与文本</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>vc<span class="preprocessor">.tabBarItem</span><span class="preprocessor">.title</span> = @<span class="string">"我的客厅"</span><span class="comment">;</span>
+vc<span class="preprocessor">.tabBarItem</span><span class="preprocessor">.image</span> = [UIImage imageNamed:@<span class="string">"icon_home_nm"</span>]<span class="comment">;</span>
+vc<span class="preprocessor">.tabBarItem</span><span class="preprocessor">.selectedImage</span> = [UIImage imageNamed:@<span class="string">"icon_home_hl"</span>]<span class="comment">;</span>
+</pre></td></tr></table></figure>
+
+<p>2.设置文字与图标之间的距离</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>vc<span class="preprocessor">.tabBarItem</span><span class="preprocessor">.titlePositionAdjustment</span> = UIOffsetMake(<span class="number">0</span>, -<span class="number">3</span>)<span class="comment">;</span>
+</pre></td></tr></table></figure>
+
+<p>3.设置角标</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>vc<span class="preprocessor">.tabBarItem</span><span class="preprocessor">.badgeValue</span> = @<span class="string">"5"</span><span class="comment">;</span>
+</pre></td></tr></table></figure>
+
+<p>我们来看一下效果：</p>
+<p><img src="/image/small-questions-in-ios/iOS6TabBar.png" alt="iOS6中的TabBar"></p>
+<p><img src="/image/small-questions-in-ios/iOS7TabBar.png" alt="iOS7中的TabBar"></p>
+<h3 id="-uitableview-"><strong>UITableview</strong></h3>
+<p>1.关于原点</p>
+<p>iOS7系统下，原点在屏幕的左上角，但是我们给UITableview的原点设置成<code>{0，0}</code>时，又感觉它的原点在<code>{0, 64}</code>的位置呢？是因为iOS7下，ViewController有一个<code>automaticallyAdjustsScrollViewInsets</code>属性，默认为YES。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="keyword">self</span><span class="variable">.automaticallyAdjustsScrollViewInsets</span> = <span class="literal">NO</span>;
+</pre></td></tr></table></figure>
+
+<p>假如UINavigationBar的毛玻璃效果设置成NO，也能打到相同的效果</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>self<span class="preprocessor">.navigationController</span><span class="preprocessor">.navigationBar</span><span class="preprocessor">.translucent</span> = NO<span class="comment">;</span>
+</pre></td></tr></table></figure>
+
+<p>2.cell的选中效果</p>
+<p>很多时候都需要用到自定义的cell，cell选中的效果也需要自定义。</p>
+<p>如果给cell的中加一个Button，来体现点击的效果，就感觉比较low了，关键效果也不乐观。使用系统自带的cell的Selected效果感觉就比较好了。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre><span class="comment">//selectedView可以设置圆角，大小等</span>
+<span class="built_in">UIView</span> *selectedView = [<span class="built_in">UIView</span> alloc] init];
+selectedView<span class="variable">.backgroundColor</span> = [<span class="built_in">UIColor</span> lightGrayColor];
+
+<span class="comment">//self为cell</span>
+<span class="keyword">self</span><span class="variable">.selectedBackgroundView</span> = selectBgView;
+</pre></td></tr></table></figure>
+
+<p>3.cell的分割线</p>
+<p>UITableviewCell自带的分割线，基本上无法满足设计师的要求，所以我们还需要自己来画一条分割线。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre><span class="built_in">UIView</span> *sepLine = [<span class="built_in">UIView</span> alloc] initWithFrame:frame];
+sepLine<span class="variable">.backgroundColor</span> = [<span class="built_in">UIColor</span> lightGrayColor];
+[cell addSubview:sepLine];
+</pre></td></tr></table></figure>
+
+<p>添加完分割线后，发现选中时分割线不见了。我们可以用另外一种方式：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="code"><pre><span class="comment">//--- 创建一张图片 ---</span>
+<span class="built_in">CGRect</span> rect = CGRectMake(<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>);
+UIGraphicsBeginImageContext(rect<span class="variable">.size</span>);
+CGContextRef context = UIGraphicsGetCurrentContext();
+    
+CGContextSetFillColorWithColor(context, [<span class="built_in">UIColor</span> yellowColor]<span class="variable">.CGColor</span>);
+CGContextFillRect(context, rect);
+    
+<span class="built_in">UIImage</span> *image = UIGraphicsGetImageFromCurrentImageContext();
+UIGraphicsEndImageContext(); 
+
+<span class="comment">//设置分割线</span>
+<span class="built_in">UIImageView</span> *lineImgv = [[<span class="built_in">UIImageView</span> alloc] initWithFrame:frame];
+lineImgv<span class="variable">.image</span> = image;
+[cell addSubview:lineImgv];
+</pre></td></tr></table></figure>
+
+<p>这里以分割线为例，其他设置成背景色的情况也是一样的。</p>
+<h3 id="-"><strong>文本</strong></h3>
+<p>我们有时候需要实现这样的需求：对文本中的部分文字改变样式（加粗、改变字体大小、改变文字颜色）；文本需要识别手机号码、邮箱；文本前面几个字不可编辑等等。</p>
+<p>1.对文本中的部分文字改变样式</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre><span class="built_in">NSString</span> *string = @<span class="string">"海风呼啸，海浪涛涛！"</span>;
+
+<span class="built_in">NSDictionary</span> *attributes = @{NSFontAttributeName: [<span class="built_in">UIFont</span> boldSystemFontOfSize:<span class="number">16</span>],
+                             NSForegroundColorAttributeName: [<span class="built_in">UIColor</span> redColor]};
+NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:string];
+[attributeString setAttributes:attributes
+                         range:NSMakeRange(<span class="number">0</span>, <span class="number">2</span>)];
+
+label<span class="variable">.attributedText</span> = attributeString;
+</pre></td></tr></table></figure>
+
+<p>NSMutableAttributedString对象的Attributes对象是NSDictionary类型，它的key可以在UIKit中的NSAttributedString.h文件中找，按需所取。</p>
+<p>这里以UILabel为例，UITextView也有attributedText属性。</p>
+<p>效果如图：</p>
+<p><img src="/image/small-questions-in-ios/textAttributes.png" alt="改变部分文字的样式"></p>
+<p>2.文本需要识别手机号码、邮箱</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="attribute">textView.dataDetectorTypes </span>=<span class="string"> UIDataDetectorTypeAll;</span>
+</pre></td></tr></table></figure>
+
+<p>通过设置这个属性，就能自动识别手机号码、日期、链接了。</p>
+<p>3.文本前面几个字不可编辑</p>
+<p>应用场景：回复某条信息的时候，往往会有个前缀“回复xxx:”，但是这段如果不特殊处理，用户很容易误操作把它删掉，我们从程序上保证前缀的这几个文字不能被删掉。</p>
+<p>我们需要实现一个UITextView的委托。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre>- (<span class="built_in">BOOL</span>)textView:(<span class="built_in">UITextView</span> *)textView shouldChangeTextInRange:(<span class="built_in">NSRange</span>)range replacementText:(<span class="built_in">NSString</span> *)text
+{
+    <span class="keyword">if</span> (range<span class="variable">.location</span> &lt; <span class="number">6</span>)	<span class="comment">//位置的大小，根据需要自己设置</span>
+    {
+        <span class="keyword">return</span> <span class="literal">NO</span>;
+    }
+    
+    <span class="keyword">return</span> <span class="literal">YES</span>;
+}
+</pre></td></tr></table></figure>
+
+<h3 id="-"><strong>键盘</strong></h3>
+<p>有时候键盘上面需要加一条，完成诸如隐藏键盘等功能，如图：</p>
+<p><img src="/image/small-questions-in-ios/keybodard.png" alt="键盘"></p>
+<p>这里需要用到UITextView/UITextField的一个属性<code>inputAccessoryView</code></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre>//此View自行玩弄
+UIView *accessoryView = [[UIView alloc] init];
+<span class="keyword">...</span>
+
+//关键是这句
+textField.inputAccessoryView = accessoryView;
+</pre></td></tr></table></figure>
+
+]]></content>
+    <summary type="html"><![CDATA[<p>在iOS开发过程中，你是不是经常遇到这样的问题：有些UI效果，明明可以通过属性配置可以实现，却因为不知道而大费周章；某个功能明明实现过，但因为忘记了如何实现而重来一遍。</p>
+<p>然而，这些问题往往都是些小问题，明明不应该花费那么多时间，但是我经常被这折腾的够呛。所以，我决定记录一下。以备下次再用。</p>
+<ul>
+<li>UIBar</li>
+<li>UINavigationBar</li>
+<li>UITabBar</li>
+<li>UITableview</li>
+<li>文本</li>
+<li>键盘</li>
+</ul>
+]]></summary>
+    
+      <category term="iOS" scheme="http://syxiaqj.github.io/tags/iOS/"/>
+    
+      <category term="iOS" scheme="http://syxiaqj.github.io/categories/iOS/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[免费内侧平台FIR]]></title>
